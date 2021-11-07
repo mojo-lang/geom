@@ -1,0 +1,1 @@
+{"title":"mojo.geom.LngLat","description":"经纬度","type":"object","properties":{"longitude":{"description":"the longitude of the `LngLat`\n经度","type":"number"},"latitude":{"description":"the latitude of the `LngLat`\n维度","type":"number"},"altitude":{"description":"the altitude of the `LngLat` in meters.\n高度","type":"number"}},"required":["longitude","latitude"]}

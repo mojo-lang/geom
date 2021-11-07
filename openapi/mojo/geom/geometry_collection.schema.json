@@ -1,0 +1,1 @@
+{"title":"mojo.geom.GeometryCollection","description":"GeoJSON GeometryCollection\n\n","type":"object","properties":{"type":{"type":"string","enum":["GeometryCollection"]},"geometries":{"type":"array","items":{"$ref":"#/components/schemas/mojo.geom.Geometry"}}},"required":["type","geometries"]}

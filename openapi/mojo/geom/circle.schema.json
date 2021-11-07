@@ -1,0 +1,1 @@
+{"title":"mojo.geom.Circle","description":"Circle Feature\n\n","type":"object","properties":{"type":{"type":"string","enum":["Circle"]},"coordinates":{"type":"array","items":{"type":"number"}},"radius":{"type":"number"}},"required":["type","coordinates"]}
