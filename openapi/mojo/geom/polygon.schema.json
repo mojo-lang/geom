@@ -1,1 +1,1 @@
-{"title":"mojo.geom.Polygon","description":"GeoJSON Polygon\n\n","type":"object","properties":{"type":{"description":"类型字段","type":"string","enum":["Polygon"]},"coordinates":{"$ref":"#/components/schemas/mojo.geom.PolygonCoordinates"}},"required":["type","coordinates"]}
+{"title":"mojo.geom.Polygon","description":"GeoJSON Polygon\n\n","type":"object","properties":{"coordinates":{"$ref":"#/components/schemas/mojo.geom.PolygonCoordinates"},"type":{"description":"类型字段","type":"string","enum":["Polygon"]}},"required":["type","coordinates"]}

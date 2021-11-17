@@ -57,13 +57,13 @@ private static final long serialVersionUID = 0L;
           }
           case 18: {
             org.mojolang.mojo.geom.LngLat.Builder subBuilder = null;
-            if (coordinate_ != null) {
-              subBuilder = coordinate_.toBuilder();
+            if (center_ != null) {
+              subBuilder = center_.toBuilder();
             }
-            coordinate_ = input.readMessage(org.mojolang.mojo.geom.LngLat.parser(), extensionRegistry);
+            center_ = input.readMessage(org.mojolang.mojo.geom.LngLat.parser(), extensionRegistry);
             if (subBuilder != null) {
-              subBuilder.mergeFrom(coordinate_);
-              coordinate_ = subBuilder.buildPartial();
+              subBuilder.mergeFrom(center_);
+              center_ = subBuilder.buildPartial();
             }
 
             break;
@@ -143,30 +143,30 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int COORDINATE_FIELD_NUMBER = 2;
-  private org.mojolang.mojo.geom.LngLat coordinate_;
+  public static final int CENTER_FIELD_NUMBER = 2;
+  private org.mojolang.mojo.geom.LngLat center_;
   /**
-   * <code>.mojo.geom.LngLat coordinate = 2 [(.mojo.alias) = "coordinates"];</code>
-   * @return Whether the coordinate field is set.
+   * <code>.mojo.geom.LngLat center = 2 [(.mojo.alias) = "coordinates"];</code>
+   * @return Whether the center field is set.
    */
   @java.lang.Override
-  public boolean hasCoordinate() {
-    return coordinate_ != null;
+  public boolean hasCenter() {
+    return center_ != null;
   }
   /**
-   * <code>.mojo.geom.LngLat coordinate = 2 [(.mojo.alias) = "coordinates"];</code>
-   * @return The coordinate.
+   * <code>.mojo.geom.LngLat center = 2 [(.mojo.alias) = "coordinates"];</code>
+   * @return The center.
    */
   @java.lang.Override
-  public org.mojolang.mojo.geom.LngLat getCoordinate() {
-    return coordinate_ == null ? org.mojolang.mojo.geom.LngLat.getDefaultInstance() : coordinate_;
+  public org.mojolang.mojo.geom.LngLat getCenter() {
+    return center_ == null ? org.mojolang.mojo.geom.LngLat.getDefaultInstance() : center_;
   }
   /**
-   * <code>.mojo.geom.LngLat coordinate = 2 [(.mojo.alias) = "coordinates"];</code>
+   * <code>.mojo.geom.LngLat center = 2 [(.mojo.alias) = "coordinates"];</code>
    */
   @java.lang.Override
-  public org.mojolang.mojo.geom.LngLatOrBuilder getCoordinateOrBuilder() {
-    return getCoordinate();
+  public org.mojolang.mojo.geom.LngLatOrBuilder getCenterOrBuilder() {
+    return getCenter();
   }
 
   public static final int RADIUS_FIELD_NUMBER = 5;
@@ -197,8 +197,8 @@ private static final long serialVersionUID = 0L;
     if (!getTypeBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, type_);
     }
-    if (coordinate_ != null) {
-      output.writeMessage(2, getCoordinate());
+    if (center_ != null) {
+      output.writeMessage(2, getCenter());
     }
     if (radius_ != 0F) {
       output.writeFloat(5, radius_);
@@ -215,9 +215,9 @@ private static final long serialVersionUID = 0L;
     if (!getTypeBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, type_);
     }
-    if (coordinate_ != null) {
+    if (center_ != null) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, getCoordinate());
+        .computeMessageSize(2, getCenter());
     }
     if (radius_ != 0F) {
       size += com.google.protobuf.CodedOutputStream
@@ -240,10 +240,10 @@ private static final long serialVersionUID = 0L;
 
     if (!getType()
         .equals(other.getType())) return false;
-    if (hasCoordinate() != other.hasCoordinate()) return false;
-    if (hasCoordinate()) {
-      if (!getCoordinate()
-          .equals(other.getCoordinate())) return false;
+    if (hasCenter() != other.hasCenter()) return false;
+    if (hasCenter()) {
+      if (!getCenter()
+          .equals(other.getCenter())) return false;
     }
     if (java.lang.Float.floatToIntBits(getRadius())
         != java.lang.Float.floatToIntBits(
@@ -261,9 +261,9 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + TYPE_FIELD_NUMBER;
     hash = (53 * hash) + getType().hashCode();
-    if (hasCoordinate()) {
-      hash = (37 * hash) + COORDINATE_FIELD_NUMBER;
-      hash = (53 * hash) + getCoordinate().hashCode();
+    if (hasCenter()) {
+      hash = (37 * hash) + CENTER_FIELD_NUMBER;
+      hash = (53 * hash) + getCenter().hashCode();
     }
     hash = (37 * hash) + RADIUS_FIELD_NUMBER;
     hash = (53 * hash) + java.lang.Float.floatToIntBits(
@@ -403,11 +403,11 @@ private static final long serialVersionUID = 0L;
       super.clear();
       type_ = "";
 
-      if (coordinateBuilder_ == null) {
-        coordinate_ = null;
+      if (centerBuilder_ == null) {
+        center_ = null;
       } else {
-        coordinate_ = null;
-        coordinateBuilder_ = null;
+        center_ = null;
+        centerBuilder_ = null;
       }
       radius_ = 0F;
 
@@ -438,10 +438,10 @@ private static final long serialVersionUID = 0L;
     public org.mojolang.mojo.geom.Circle buildPartial() {
       org.mojolang.mojo.geom.Circle result = new org.mojolang.mojo.geom.Circle(this);
       result.type_ = type_;
-      if (coordinateBuilder_ == null) {
-        result.coordinate_ = coordinate_;
+      if (centerBuilder_ == null) {
+        result.center_ = center_;
       } else {
-        result.coordinate_ = coordinateBuilder_.build();
+        result.center_ = centerBuilder_.build();
       }
       result.radius_ = radius_;
       onBuilt();
@@ -496,8 +496,8 @@ private static final long serialVersionUID = 0L;
         type_ = other.type_;
         onChanged();
       }
-      if (other.hasCoordinate()) {
-        mergeCoordinate(other.getCoordinate());
+      if (other.hasCenter()) {
+        mergeCenter(other.getCenter());
       }
       if (other.getRadius() != 0F) {
         setRadius(other.getRadius());
@@ -607,123 +607,123 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private org.mojolang.mojo.geom.LngLat coordinate_;
+    private org.mojolang.mojo.geom.LngLat center_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        org.mojolang.mojo.geom.LngLat, org.mojolang.mojo.geom.LngLat.Builder, org.mojolang.mojo.geom.LngLatOrBuilder> coordinateBuilder_;
+        org.mojolang.mojo.geom.LngLat, org.mojolang.mojo.geom.LngLat.Builder, org.mojolang.mojo.geom.LngLatOrBuilder> centerBuilder_;
     /**
-     * <code>.mojo.geom.LngLat coordinate = 2 [(.mojo.alias) = "coordinates"];</code>
-     * @return Whether the coordinate field is set.
+     * <code>.mojo.geom.LngLat center = 2 [(.mojo.alias) = "coordinates"];</code>
+     * @return Whether the center field is set.
      */
-    public boolean hasCoordinate() {
-      return coordinateBuilder_ != null || coordinate_ != null;
+    public boolean hasCenter() {
+      return centerBuilder_ != null || center_ != null;
     }
     /**
-     * <code>.mojo.geom.LngLat coordinate = 2 [(.mojo.alias) = "coordinates"];</code>
-     * @return The coordinate.
+     * <code>.mojo.geom.LngLat center = 2 [(.mojo.alias) = "coordinates"];</code>
+     * @return The center.
      */
-    public org.mojolang.mojo.geom.LngLat getCoordinate() {
-      if (coordinateBuilder_ == null) {
-        return coordinate_ == null ? org.mojolang.mojo.geom.LngLat.getDefaultInstance() : coordinate_;
+    public org.mojolang.mojo.geom.LngLat getCenter() {
+      if (centerBuilder_ == null) {
+        return center_ == null ? org.mojolang.mojo.geom.LngLat.getDefaultInstance() : center_;
       } else {
-        return coordinateBuilder_.getMessage();
+        return centerBuilder_.getMessage();
       }
     }
     /**
-     * <code>.mojo.geom.LngLat coordinate = 2 [(.mojo.alias) = "coordinates"];</code>
+     * <code>.mojo.geom.LngLat center = 2 [(.mojo.alias) = "coordinates"];</code>
      */
-    public Builder setCoordinate(org.mojolang.mojo.geom.LngLat value) {
-      if (coordinateBuilder_ == null) {
+    public Builder setCenter(org.mojolang.mojo.geom.LngLat value) {
+      if (centerBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        coordinate_ = value;
+        center_ = value;
         onChanged();
       } else {
-        coordinateBuilder_.setMessage(value);
+        centerBuilder_.setMessage(value);
       }
 
       return this;
     }
     /**
-     * <code>.mojo.geom.LngLat coordinate = 2 [(.mojo.alias) = "coordinates"];</code>
+     * <code>.mojo.geom.LngLat center = 2 [(.mojo.alias) = "coordinates"];</code>
      */
-    public Builder setCoordinate(
+    public Builder setCenter(
         org.mojolang.mojo.geom.LngLat.Builder builderForValue) {
-      if (coordinateBuilder_ == null) {
-        coordinate_ = builderForValue.build();
+      if (centerBuilder_ == null) {
+        center_ = builderForValue.build();
         onChanged();
       } else {
-        coordinateBuilder_.setMessage(builderForValue.build());
+        centerBuilder_.setMessage(builderForValue.build());
       }
 
       return this;
     }
     /**
-     * <code>.mojo.geom.LngLat coordinate = 2 [(.mojo.alias) = "coordinates"];</code>
+     * <code>.mojo.geom.LngLat center = 2 [(.mojo.alias) = "coordinates"];</code>
      */
-    public Builder mergeCoordinate(org.mojolang.mojo.geom.LngLat value) {
-      if (coordinateBuilder_ == null) {
-        if (coordinate_ != null) {
-          coordinate_ =
-            org.mojolang.mojo.geom.LngLat.newBuilder(coordinate_).mergeFrom(value).buildPartial();
+    public Builder mergeCenter(org.mojolang.mojo.geom.LngLat value) {
+      if (centerBuilder_ == null) {
+        if (center_ != null) {
+          center_ =
+            org.mojolang.mojo.geom.LngLat.newBuilder(center_).mergeFrom(value).buildPartial();
         } else {
-          coordinate_ = value;
+          center_ = value;
         }
         onChanged();
       } else {
-        coordinateBuilder_.mergeFrom(value);
+        centerBuilder_.mergeFrom(value);
       }
 
       return this;
     }
     /**
-     * <code>.mojo.geom.LngLat coordinate = 2 [(.mojo.alias) = "coordinates"];</code>
+     * <code>.mojo.geom.LngLat center = 2 [(.mojo.alias) = "coordinates"];</code>
      */
-    public Builder clearCoordinate() {
-      if (coordinateBuilder_ == null) {
-        coordinate_ = null;
+    public Builder clearCenter() {
+      if (centerBuilder_ == null) {
+        center_ = null;
         onChanged();
       } else {
-        coordinate_ = null;
-        coordinateBuilder_ = null;
+        center_ = null;
+        centerBuilder_ = null;
       }
 
       return this;
     }
     /**
-     * <code>.mojo.geom.LngLat coordinate = 2 [(.mojo.alias) = "coordinates"];</code>
+     * <code>.mojo.geom.LngLat center = 2 [(.mojo.alias) = "coordinates"];</code>
      */
-    public org.mojolang.mojo.geom.LngLat.Builder getCoordinateBuilder() {
+    public org.mojolang.mojo.geom.LngLat.Builder getCenterBuilder() {
       
       onChanged();
-      return getCoordinateFieldBuilder().getBuilder();
+      return getCenterFieldBuilder().getBuilder();
     }
     /**
-     * <code>.mojo.geom.LngLat coordinate = 2 [(.mojo.alias) = "coordinates"];</code>
+     * <code>.mojo.geom.LngLat center = 2 [(.mojo.alias) = "coordinates"];</code>
      */
-    public org.mojolang.mojo.geom.LngLatOrBuilder getCoordinateOrBuilder() {
-      if (coordinateBuilder_ != null) {
-        return coordinateBuilder_.getMessageOrBuilder();
+    public org.mojolang.mojo.geom.LngLatOrBuilder getCenterOrBuilder() {
+      if (centerBuilder_ != null) {
+        return centerBuilder_.getMessageOrBuilder();
       } else {
-        return coordinate_ == null ?
-            org.mojolang.mojo.geom.LngLat.getDefaultInstance() : coordinate_;
+        return center_ == null ?
+            org.mojolang.mojo.geom.LngLat.getDefaultInstance() : center_;
       }
     }
     /**
-     * <code>.mojo.geom.LngLat coordinate = 2 [(.mojo.alias) = "coordinates"];</code>
+     * <code>.mojo.geom.LngLat center = 2 [(.mojo.alias) = "coordinates"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         org.mojolang.mojo.geom.LngLat, org.mojolang.mojo.geom.LngLat.Builder, org.mojolang.mojo.geom.LngLatOrBuilder> 
-        getCoordinateFieldBuilder() {
-      if (coordinateBuilder_ == null) {
-        coordinateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+        getCenterFieldBuilder() {
+      if (centerBuilder_ == null) {
+        centerBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
             org.mojolang.mojo.geom.LngLat, org.mojolang.mojo.geom.LngLat.Builder, org.mojolang.mojo.geom.LngLatOrBuilder>(
-                getCoordinate(),
+                getCenter(),
                 getParentForChildren(),
                 isClean());
-        coordinate_ = null;
+        center_ = null;
       }
-      return coordinateBuilder_;
+      return centerBuilder_;
     }
 
     private float radius_ ;

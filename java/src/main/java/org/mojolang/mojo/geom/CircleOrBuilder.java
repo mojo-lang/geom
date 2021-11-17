@@ -20,19 +20,19 @@ public interface CircleOrBuilder extends
       getTypeBytes();
 
   /**
-   * <code>.mojo.geom.LngLat coordinate = 2 [(.mojo.alias) = "coordinates"];</code>
-   * @return Whether the coordinate field is set.
+   * <code>.mojo.geom.LngLat center = 2 [(.mojo.alias) = "coordinates"];</code>
+   * @return Whether the center field is set.
    */
-  boolean hasCoordinate();
+  boolean hasCenter();
   /**
-   * <code>.mojo.geom.LngLat coordinate = 2 [(.mojo.alias) = "coordinates"];</code>
-   * @return The coordinate.
+   * <code>.mojo.geom.LngLat center = 2 [(.mojo.alias) = "coordinates"];</code>
+   * @return The center.
    */
-  org.mojolang.mojo.geom.LngLat getCoordinate();
+  org.mojolang.mojo.geom.LngLat getCenter();
   /**
-   * <code>.mojo.geom.LngLat coordinate = 2 [(.mojo.alias) = "coordinates"];</code>
+   * <code>.mojo.geom.LngLat center = 2 [(.mojo.alias) = "coordinates"];</code>
    */
-  org.mojolang.mojo.geom.LngLatOrBuilder getCoordinateOrBuilder();
+  org.mojolang.mojo.geom.LngLatOrBuilder getCenterOrBuilder();
 
   /**
    * <code>float radius = 5;</code>

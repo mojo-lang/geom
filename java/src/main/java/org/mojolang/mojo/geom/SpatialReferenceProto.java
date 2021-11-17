@@ -24,15 +24,14 @@ public final class SpatialReferenceProto {
   static {
     java.lang.String[] descriptorData = {
       "\n!mojo/geom/spatial_reference.proto\022\tmoj" +
-      "o.geom*\316\001\n\020SpatialReference\022!\n\035SPATIAL_R" +
-      "EFERENCE_UNSPECIFIED\020\000\022\034\n\030SPATIAL_REFERE" +
-      "NCE_WGS_84\020\001\022\034\n\030SPATIAL_REFERENCE_GCJ_02" +
-      "\020\002\022\033\n\027SPATIAL_REFERENCE_BD_09\020\003\022\037\n\033SPATI" +
-      "AL_REFERENCE_CGCS_2000\020\004\022\035\n\031SPATIAL_REFE" +
-      "RENCE_SH_2000\020\005Bb\n\026org.mojolang.mojo.geo" +
-      "mB\025SpatialReferenceProtoP\001Z/github.com/m" +
-      "ojo-lang/geom/go/pkg/mojo/geom;geomb\006pro" +
-      "to3"
+      "o.geom*\311\001\n\020SpatialReference\022!\n\035SPATIAL_R" +
+      "EFERENCE_UNSPECIFIED\020\000\022\033\n\027SPATIAL_REFERE" +
+      "NCE_WGS84\020\001\022\033\n\027SPATIAL_REFERENCE_GCJ02\020\002" +
+      "\022\032\n\026SPATIAL_REFERENCE_BD09\020\003\022\036\n\032SPATIAL_" +
+      "REFERENCE_CGCS2000\020\004\022\034\n\030SPATIAL_REFERENC" +
+      "E_SH2000\020\005Bb\n\026org.mojolang.mojo.geomB\025Sp" +
+      "atialReferenceProtoP\001Z/github.com/mojo-l" +
+      "ang/geom/go/pkg/mojo/geom;geomb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

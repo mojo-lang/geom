@@ -1,8 +1,9 @@
 package geom
 
 import (
-	jsoniter "github.com/json-iterator/go"
 	"unsafe"
+
+	jsoniter "github.com/json-iterator/go"
 )
 
 func init() {
@@ -59,18 +60,25 @@ func (codec *GeometryCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) 
 
 	switch x := geometry.Geometry.(type) {
 	case *Geometry_Point:
+		x.Point.Type = "Point"
 		stream.WriteVal(x.Point)
 	case *Geometry_MultiPoint:
+		x.MultiPoint.Type = "MultiPoint"
 		stream.WriteVal(x.MultiPoint)
 	case *Geometry_LineString:
+		x.LineString.Type = "LineString"
 		stream.WriteVal(x.LineString)
 	case *Geometry_MultiLineString:
+		x.MultiLineString.Type = "MultiLineString"
 		stream.WriteVal(x.MultiLineString)
 	case *Geometry_Polygon:
+		x.Polygon.Type = "Polygon"
 		stream.WriteVal(x.Polygon)
 	case *Geometry_MultiPolygon:
+		x.MultiPolygon.Type = "MultiPolygon"
 		stream.WriteVal(x.MultiPolygon)
 	case *Geometry_GeometryCollection:
+		x.GeometryCollection.Type = "GeometryCollection"
 		stream.WriteVal(x.GeometryCollection)
 	default:
 		stream.WriteObjectStart()

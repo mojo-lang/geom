@@ -29,12 +29,12 @@ public final class CircleProto {
   static {
     java.lang.String[] descriptorData = {
       "\n\026mojo/geom/circle.proto\022\tmojo.geom\032\027moj" +
-      "o/geom/lng_lat.proto\032\017mojo/mojo.proto\"^\n" +
-      "\006Circle\022\014\n\004type\030\001 \001(\t\0226\n\ncoordinate\030\002 \001(" +
-      "\0132\021.mojo.geom.LngLatB\017\312\317$\013coordinates\022\016\n" +
-      "\006radius\030\005 \001(\002BX\n\026org.mojolang.mojo.geomB" +
-      "\013CircleProtoP\001Z/github.com/mojo-lang/geo" +
-      "m/go/pkg/mojo/geom;geomb\006proto3"
+      "o/geom/lng_lat.proto\032\017mojo/mojo.proto\"Z\n" +
+      "\006Circle\022\014\n\004type\030\001 \001(\t\0222\n\006center\030\002 \001(\0132\021." +
+      "mojo.geom.LngLatB\017\312\317$\013coordinates\022\016\n\006rad" +
+      "ius\030\005 \001(\002BX\n\026org.mojolang.mojo.geomB\013Cir" +
+      "cleProtoP\001Z/github.com/mojo-lang/geom/go" +
+      "/pkg/mojo/geom;geomb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -47,7 +47,7 @@ public final class CircleProto {
     internal_static_mojo_geom_Circle_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mojo_geom_Circle_descriptor,
-        new java.lang.String[] { "Type", "Coordinate", "Radius", });
+        new java.lang.String[] { "Type", "Center", "Radius", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(com.google.protobuf.MojoProtos.alias);

@@ -13,25 +13,25 @@ public enum SpatialReference
    */
   SPATIAL_REFERENCE_UNSPECIFIED(0),
   /**
-   * <code>SPATIAL_REFERENCE_WGS_84 = 1;</code>
+   * <code>SPATIAL_REFERENCE_WGS84 = 1;</code>
    */
-  SPATIAL_REFERENCE_WGS_84(1),
+  SPATIAL_REFERENCE_WGS84(1),
   /**
-   * <code>SPATIAL_REFERENCE_GCJ_02 = 2;</code>
+   * <code>SPATIAL_REFERENCE_GCJ02 = 2;</code>
    */
-  SPATIAL_REFERENCE_GCJ_02(2),
+  SPATIAL_REFERENCE_GCJ02(2),
   /**
-   * <code>SPATIAL_REFERENCE_BD_09 = 3;</code>
+   * <code>SPATIAL_REFERENCE_BD09 = 3;</code>
    */
-  SPATIAL_REFERENCE_BD_09(3),
+  SPATIAL_REFERENCE_BD09(3),
   /**
-   * <code>SPATIAL_REFERENCE_CGCS_2000 = 4;</code>
+   * <code>SPATIAL_REFERENCE_CGCS2000 = 4;</code>
    */
-  SPATIAL_REFERENCE_CGCS_2000(4),
+  SPATIAL_REFERENCE_CGCS2000(4),
   /**
-   * <code>SPATIAL_REFERENCE_SH_2000 = 5;</code>
+   * <code>SPATIAL_REFERENCE_SH2000 = 5;</code>
    */
-  SPATIAL_REFERENCE_SH_2000(5),
+  SPATIAL_REFERENCE_SH2000(5),
   UNRECOGNIZED(-1),
   ;
 
@@ -40,25 +40,25 @@ public enum SpatialReference
    */
   public static final int SPATIAL_REFERENCE_UNSPECIFIED_VALUE = 0;
   /**
-   * <code>SPATIAL_REFERENCE_WGS_84 = 1;</code>
+   * <code>SPATIAL_REFERENCE_WGS84 = 1;</code>
    */
-  public static final int SPATIAL_REFERENCE_WGS_84_VALUE = 1;
+  public static final int SPATIAL_REFERENCE_WGS84_VALUE = 1;
   /**
-   * <code>SPATIAL_REFERENCE_GCJ_02 = 2;</code>
+   * <code>SPATIAL_REFERENCE_GCJ02 = 2;</code>
    */
-  public static final int SPATIAL_REFERENCE_GCJ_02_VALUE = 2;
+  public static final int SPATIAL_REFERENCE_GCJ02_VALUE = 2;
   /**
-   * <code>SPATIAL_REFERENCE_BD_09 = 3;</code>
+   * <code>SPATIAL_REFERENCE_BD09 = 3;</code>
    */
-  public static final int SPATIAL_REFERENCE_BD_09_VALUE = 3;
+  public static final int SPATIAL_REFERENCE_BD09_VALUE = 3;
   /**
-   * <code>SPATIAL_REFERENCE_CGCS_2000 = 4;</code>
+   * <code>SPATIAL_REFERENCE_CGCS2000 = 4;</code>
    */
-  public static final int SPATIAL_REFERENCE_CGCS_2000_VALUE = 4;
+  public static final int SPATIAL_REFERENCE_CGCS2000_VALUE = 4;
   /**
-   * <code>SPATIAL_REFERENCE_SH_2000 = 5;</code>
+   * <code>SPATIAL_REFERENCE_SH2000 = 5;</code>
    */
-  public static final int SPATIAL_REFERENCE_SH_2000_VALUE = 5;
+  public static final int SPATIAL_REFERENCE_SH2000_VALUE = 5;
 
 
   public final int getNumber() {
@@ -86,11 +86,11 @@ public enum SpatialReference
   public static SpatialReference forNumber(int value) {
     switch (value) {
       case 0: return SPATIAL_REFERENCE_UNSPECIFIED;
-      case 1: return SPATIAL_REFERENCE_WGS_84;
-      case 2: return SPATIAL_REFERENCE_GCJ_02;
-      case 3: return SPATIAL_REFERENCE_BD_09;
-      case 4: return SPATIAL_REFERENCE_CGCS_2000;
-      case 5: return SPATIAL_REFERENCE_SH_2000;
+      case 1: return SPATIAL_REFERENCE_WGS84;
+      case 2: return SPATIAL_REFERENCE_GCJ02;
+      case 3: return SPATIAL_REFERENCE_BD09;
+      case 4: return SPATIAL_REFERENCE_CGCS2000;
+      case 5: return SPATIAL_REFERENCE_SH2000;
       default: return null;
     }
   }

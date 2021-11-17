@@ -1,1 +1,1 @@
-{"title":"mojo.geom.MultiPolygon","description":"","type":"object","properties":{"type":{"type":"string","enum":["MultiPolygon"]},"coordinates":{"type":"array","items":{"$ref":"#/components/schemas/mojo.geom.PolygonCoordinates"}}},"required":["type","coordinates"]}
+{"title":"mojo.geom.MultiPolygon","description":"","type":"object","properties":{"coordinates":{"type":"array","items":{"$ref":"#/components/schemas/mojo.geom.PolygonCoordinates"}},"type":{"type":"string","enum":["MultiPolygon"]}},"required":["type","coordinates"]}

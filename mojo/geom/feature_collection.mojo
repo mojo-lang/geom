@@ -14,7 +14,7 @@
 
 /// GeoJSON FeatureCollection
 ///
-//@protobuf_encoding<{String, Value}>('dictionary', [13, 14])
+//@protobuf_encoding<{String, Value}>('map', [13, 14])
 type FeatureCollection {
     type: String @1 @required @const("FeatureCollection")
 

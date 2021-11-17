@@ -14,6 +14,6 @@ option java_package = "org.mojolang.mojo.geom";
 
 message Circle {
     string type = 1;
-    LngLat coordinate = 2 [(mojo.alias)="coordinates"];
+    LngLat center = 2 [(mojo.alias)="coordinates"];
     float radius = 5;
 }

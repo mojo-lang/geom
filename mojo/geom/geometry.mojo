@@ -16,6 +16,7 @@
 ///
 ///
 @label_format('{}')
+@discriminator("type")
 type Geometry = Point              @1
               | MultiPoint         @2
               | LineString         @3

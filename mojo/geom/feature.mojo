@@ -25,7 +25,7 @@ type Feature {
     spatial_reference: SpatialReference @5 @alias("crs")
 
     //
-    properties: {String: Value} @6 @protobuf.encoding({type: 'dictionary', field_numbers: [13, 14, 15]})
+    properties: {String: Value} @6 @protobuf.encoding({type: 'map', field_numbers: [13, 14, 15]})
 
     //keys: [string] @13  // global arrays of unique keys
     //values: [Value] @14 // unique values
