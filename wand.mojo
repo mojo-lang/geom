@@ -1,5 +1,4 @@
 ///
-@attach()
 package mojo.geom {
     version: '0.1.0'
     license: ''

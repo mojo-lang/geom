@@ -22,8 +22,8 @@ func (m Circle) ToPolygon(numberOfSegments int) *Polygon {
 }
 
 func (m Circle) destination(bearing float64) *LngLat {
-	lat := toRadians(m.Coordinate.Latitude)
-	lng := toRadians(m.Coordinate.Longitude)
+	lat := toRadians(m.Center.Latitude)
+	lng := toRadians(m.Center.Longitude)
 	var dByR = float64(m.Radius / 6378137.0) // distance divided by 6378137 (radius of the earth) wgs84
 
 	lat = math.Asin(math.Sin(lat)*math.Cos(dByR) + math.Cos(lat)*math.Sin(dByR)*math.Cos(bearing))

@@ -8,11 +8,11 @@ import (
 
 // Implement driver.Valuer and sql.Scanner interfaces on Brand
 func (m Circle) Value() (driver.Value, error) {
-	if m.Radius == 0 && m.Coordinate.IsEmpty() {
+	if m.Radius == 0 && m.Center.IsEmpty() {
 		return nil, nil
 	}
 
-	str := fmt.Sprintf("<(%f,%f),%f>", m.Coordinate.Longitude, m.Coordinate.Latitude, m.Radius)
+	str := fmt.Sprintf("<(%f,%f),%f>", m.Center.Longitude, m.Center.Latitude, m.Radius)
 	return str, nil
 }
 
@@ -23,10 +23,10 @@ func (m *Circle) Scan(src interface{}) error {
 	}
 	switch bs := src.(type) {
 	case []byte:
-		_, err := fmt.Sscanf(string(bs), "<(%f,%f),%f>", &m.Coordinate.Longitude, &m.Coordinate.Latitude, &m.Radius)
+		_, err := fmt.Sscanf(string(bs), "<(%f,%f),%f>", &m.Center.Longitude, &m.Center.Latitude, &m.Radius)
 		return err
 	case string:
-		_, err := fmt.Sscanf(bs, "<(%f,%f),%f>", &m.Coordinate.Longitude, &m.Coordinate.Latitude, &m.Radius)
+		_, err := fmt.Sscanf(bs, "<(%f,%f),%f>", &m.Center.Longitude, &m.Center.Latitude, &m.Radius)
 		return err
 	default:
 		return fmt.Errorf("Could not not Decode type %T -> %T", src, m)

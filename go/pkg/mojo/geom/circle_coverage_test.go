@@ -25,7 +25,7 @@ func PolygonJson(p *Polygon) string {
 }
 
 func TestCircle_GeoHashCovering(t *testing.T) {
-	circle := &Circle{Coordinate: &LngLat{Longitude: 121.482885, Latitude: 31.236148}, Radius: 75}
+	circle := &Circle{Center: &LngLat{Longitude: 121.482885, Latitude: 31.236148}, Radius: 75}
 
 	hashes := circle.GeoHashFractionCovering(7, 7, 10000, 0.5)
 	fmt.Print(hashes)
