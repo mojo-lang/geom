@@ -9,6 +9,6 @@ require (
 	github.com/json-iterator/go v1.1.12
 	github.com/kr/pretty v0.3.0 // indirect
 	github.com/mmcloughlin/geohash v0.10.0
-	github.com/mojo-lang/core/go v0.0.0-20211121055316-dc6cb21cb918
+	github.com/mojo-lang/core/go v0.0.0-20211123010202-03f9f6e22fd2
 	github.com/stretchr/testify v1.7.0
 )
