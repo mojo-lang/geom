@@ -18,5 +18,5 @@ message LineString {
 }
 
 message LineStringCoordinates {
-    repeated PointCoordinates values = 1;
+    repeated PointCoordinates vals = 1;
 }

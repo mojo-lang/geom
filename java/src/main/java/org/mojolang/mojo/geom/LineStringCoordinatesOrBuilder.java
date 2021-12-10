@@ -8,26 +8,26 @@ public interface LineStringCoordinatesOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .mojo.geom.PointCoordinates values = 1;</code>
+   * <code>repeated .mojo.geom.PointCoordinates vals = 1;</code>
    */
   java.util.List<org.mojolang.mojo.geom.PointCoordinates> 
-      getValuesList();
+      getValsList();
   /**
-   * <code>repeated .mojo.geom.PointCoordinates values = 1;</code>
+   * <code>repeated .mojo.geom.PointCoordinates vals = 1;</code>
    */
-  org.mojolang.mojo.geom.PointCoordinates getValues(int index);
+  org.mojolang.mojo.geom.PointCoordinates getVals(int index);
   /**
-   * <code>repeated .mojo.geom.PointCoordinates values = 1;</code>
+   * <code>repeated .mojo.geom.PointCoordinates vals = 1;</code>
    */
-  int getValuesCount();
+  int getValsCount();
   /**
-   * <code>repeated .mojo.geom.PointCoordinates values = 1;</code>
+   * <code>repeated .mojo.geom.PointCoordinates vals = 1;</code>
    */
   java.util.List<? extends org.mojolang.mojo.geom.PointCoordinatesOrBuilder> 
-      getValuesOrBuilderList();
+      getValsOrBuilderList();
   /**
-   * <code>repeated .mojo.geom.PointCoordinates values = 1;</code>
+   * <code>repeated .mojo.geom.PointCoordinates vals = 1;</code>
    */
-  org.mojolang.mojo.geom.PointCoordinatesOrBuilder getValuesOrBuilder(
+  org.mojolang.mojo.geom.PointCoordinatesOrBuilder getValsOrBuilder(
       int index);
 }

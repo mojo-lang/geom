@@ -18,5 +18,5 @@ message Point {
 }
 
 message PointCoordinates {
-    repeated double values = 1;
+    repeated double vals = 1;
 }

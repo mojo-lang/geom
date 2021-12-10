@@ -19,9 +19,9 @@ message Polygon {
 }
 
 message LinearRingCoordinates {
-    repeated PointCoordinates values = 1;
+    repeated PointCoordinates vals = 1;
 }
 
 message PolygonCoordinates {
-    repeated LinearRingCoordinates values = 1;
+    repeated LinearRingCoordinates vals = 1;
 }

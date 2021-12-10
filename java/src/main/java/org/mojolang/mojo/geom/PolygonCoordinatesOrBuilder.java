@@ -8,26 +8,26 @@ public interface PolygonCoordinatesOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>repeated .mojo.geom.LinearRingCoordinates values = 1;</code>
+   * <code>repeated .mojo.geom.LinearRingCoordinates vals = 1;</code>
    */
   java.util.List<org.mojolang.mojo.geom.LinearRingCoordinates> 
-      getValuesList();
+      getValsList();
   /**
-   * <code>repeated .mojo.geom.LinearRingCoordinates values = 1;</code>
+   * <code>repeated .mojo.geom.LinearRingCoordinates vals = 1;</code>
    */
-  org.mojolang.mojo.geom.LinearRingCoordinates getValues(int index);
+  org.mojolang.mojo.geom.LinearRingCoordinates getVals(int index);
   /**
-   * <code>repeated .mojo.geom.LinearRingCoordinates values = 1;</code>
+   * <code>repeated .mojo.geom.LinearRingCoordinates vals = 1;</code>
    */
-  int getValuesCount();
+  int getValsCount();
   /**
-   * <code>repeated .mojo.geom.LinearRingCoordinates values = 1;</code>
+   * <code>repeated .mojo.geom.LinearRingCoordinates vals = 1;</code>
    */
   java.util.List<? extends org.mojolang.mojo.geom.LinearRingCoordinatesOrBuilder> 
-      getValuesOrBuilderList();
+      getValsOrBuilderList();
   /**
-   * <code>repeated .mojo.geom.LinearRingCoordinates values = 1;</code>
+   * <code>repeated .mojo.geom.LinearRingCoordinates vals = 1;</code>
    */
-  org.mojolang.mojo.geom.LinearRingCoordinatesOrBuilder getValuesOrBuilder(
+  org.mojolang.mojo.geom.LinearRingCoordinatesOrBuilder getValsOrBuilder(
       int index);
 }

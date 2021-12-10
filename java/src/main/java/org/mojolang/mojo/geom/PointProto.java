@@ -36,11 +36,11 @@ public final class PointProto {
       "\n\025mojo/geom/point.proto\022\tmojo.geom\032\027mojo" +
       "/geom/lng_lat.proto\032\017mojo/mojo.proto\"M\n\005" +
       "Point\022\014\n\004type\030\001 \001(\t\0226\n\ncoordinate\030\005 \001(\0132" +
-      "\021.mojo.geom.LngLatB\017\312\317$\013coordinates\"\"\n\020P" +
-      "ointCoordinates\022\016\n\006values\030\001 \003(\001BW\n\026org.m" +
-      "ojolang.mojo.geomB\nPointProtoP\001Z/github." +
-      "com/mojo-lang/geom/go/pkg/mojo/geom;geom" +
-      "b\006proto3"
+      "\021.mojo.geom.LngLatB\017\312\317$\013coordinates\" \n\020P" +
+      "ointCoordinates\022\014\n\004vals\030\001 \003(\001BW\n\026org.moj" +
+      "olang.mojo.geomB\nPointProtoP\001Z/github.co" +
+      "m/mojo-lang/geom/go/pkg/mojo/geom;geomb\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -59,7 +59,7 @@ public final class PointProto {
     internal_static_mojo_geom_PointCoordinates_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mojo_geom_PointCoordinates_descriptor,
-        new java.lang.String[] { "Values", });
+        new java.lang.String[] { "Vals", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(com.google.protobuf.MojoProtos.alias);

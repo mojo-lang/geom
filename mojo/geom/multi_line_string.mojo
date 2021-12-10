@@ -18,5 +18,5 @@
 type MultiLineString {
     type: String @1 @required @const("MultiLineString") 
     
-    line_strings: [LineString] @5 @required @alias("coordinates") @type_format<[LinestringCoordinates]>
+    line_strings: [LineString] @5 @required @alias("coordinates") @type_format<[LineStringCoordinates]>
 }
