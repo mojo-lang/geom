@@ -20,6 +20,7 @@ type Point {
     coordinate: LngLat @5 @required @alias("coordinates") @type_format<PointCoordinates>
 }
 
+@disable_generate
 type PointCoordinates = [Double] @min_length(2) @max_length(3)
 
 ///

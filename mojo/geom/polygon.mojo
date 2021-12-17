@@ -23,10 +23,10 @@ type Polygon {
     line_strings: [LineString] @5 @required @alias("coordinates") @type_format<PolygonCoordinates>
 }
 
-@disable_generate_all
+@disable_generate
 type LinearRingCoordinates = [PointCoordinates] @min_length(4)
 
-@disable_generate_all
+@disable_generate
 type PolygonCoordinates = [LinearRingCoordinates]
 
 ///

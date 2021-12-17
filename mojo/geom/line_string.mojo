@@ -12,15 +12,27 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/// Geojson LineString object
 ///
-///
-///
+/// # example
+/// ``` json
+/// {
+///     "type": "LineString",
+///     "coordinates": [
+///         [102.0, 0.0],
+///         [103.0, 1.0],
+///         [104.0, 0.0],
+///         [105.0, 1.0]
+///     ]
+///  }
+/// ```
 type LineString {
     type: String @1 @required @const("LineString")
     
-    coordinates: [LngLat] @5 @type_format<LineStringCoordinates>
+    coordinates: [LngLat] @5 @required @type_format<LineStringCoordinates>
 }
 
+@disable_generate
 type LineStringCoordinates = [PointCoordinates] @min_length(2)
 
 ///

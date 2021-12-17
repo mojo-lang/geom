@@ -16,7 +16,3 @@ message Point {
     string type = 1;
     LngLat coordinate = 5 [(mojo.alias)="coordinates"];
 }
-
-message PointCoordinates {
-    repeated double vals = 1;
-}

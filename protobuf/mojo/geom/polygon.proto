@@ -17,11 +17,3 @@ message Polygon {
     string type = 1;
     repeated LineString line_strings = 5 [(mojo.alias)="coordinates"];
 }
-
-message LinearRingCoordinates {
-    repeated PointCoordinates vals = 1;
-}
-
-message PolygonCoordinates {
-    repeated LinearRingCoordinates vals = 1;
-}

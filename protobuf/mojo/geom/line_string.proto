@@ -16,7 +16,3 @@ message LineString {
     string type = 1;
     repeated LngLat coordinates = 5;
 }
-
-message LineStringCoordinates {
-    repeated PointCoordinates vals = 1;
-}

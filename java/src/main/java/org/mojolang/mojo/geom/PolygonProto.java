@@ -19,16 +19,6 @@ public final class PolygonProto {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_mojo_geom_Polygon_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_mojo_geom_LinearRingCoordinates_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_mojo_geom_LinearRingCoordinates_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_mojo_geom_PolygonCoordinates_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_mojo_geom_PolygonCoordinates_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -42,13 +32,10 @@ public final class PolygonProto {
       "jo/geom/line_string.proto\032\025mojo/geom/poi" +
       "nt.proto\032\017mojo/mojo.proto\"U\n\007Polygon\022\014\n\004" +
       "type\030\001 \001(\t\022<\n\014line_strings\030\005 \003(\0132\025.mojo." +
-      "geom.LineStringB\017\312\317$\013coordinates\"B\n\025Line" +
-      "arRingCoordinates\022)\n\004vals\030\001 \003(\0132\033.mojo.g" +
-      "eom.PointCoordinates\"D\n\022PolygonCoordinat" +
-      "es\022.\n\004vals\030\001 \003(\0132 .mojo.geom.LinearRingC" +
-      "oordinatesBY\n\026org.mojolang.mojo.geomB\014Po" +
-      "lygonProtoP\001Z/github.com/mojo-lang/geom/" +
-      "go/pkg/mojo/geom;geomb\006proto3"
+      "geom.LineStringB\017\312\317$\013coordinatesBY\n\026org." +
+      "mojolang.mojo.geomB\014PolygonProtoP\001Z/gith" +
+      "ub.com/mojo-lang/geom/go/pkg/mojo/geom;g" +
+      "eomb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -63,18 +50,6 @@ public final class PolygonProto {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_mojo_geom_Polygon_descriptor,
         new java.lang.String[] { "Type", "LineStrings", });
-    internal_static_mojo_geom_LinearRingCoordinates_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_mojo_geom_LinearRingCoordinates_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_mojo_geom_LinearRingCoordinates_descriptor,
-        new java.lang.String[] { "Vals", });
-    internal_static_mojo_geom_PolygonCoordinates_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_mojo_geom_PolygonCoordinates_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_mojo_geom_PolygonCoordinates_descriptor,
-        new java.lang.String[] { "Vals", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(com.google.protobuf.MojoProtos.alias);
