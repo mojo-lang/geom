@@ -5,4 +5,4 @@
 | `geometry` | `mojo.geom.Geometry` |  | 否 |  |
 | `bbox` | `mojo.geom.BoundingBox` |  | 否 |  |
 | `crs` | `string` |  | 否 |  |
-| `properties` | `Map<string, mojo.core.Value>` |  | 否 |  |
+| `properties` | `Map<string, Value>` |  | 否 |  |

@@ -327,7 +327,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public boolean containsProperties(
       java.lang.String key) {
-    if (key == null) { throw new java.lang.NullPointerException(); }
+    if (key == null) { throw new NullPointerException("map key"); }
     return internalGetProperties().getMap().containsKey(key);
   }
   /**
@@ -354,7 +354,7 @@ private static final long serialVersionUID = 0L;
   public org.mojolang.mojo.core.Value getPropertiesOrDefault(
       java.lang.String key,
       org.mojolang.mojo.core.Value defaultValue) {
-    if (key == null) { throw new java.lang.NullPointerException(); }
+    if (key == null) { throw new NullPointerException("map key"); }
     java.util.Map<java.lang.String, org.mojolang.mojo.core.Value> map =
         internalGetProperties().getMap();
     return map.containsKey(key) ? map.get(key) : defaultValue;
@@ -366,7 +366,7 @@ private static final long serialVersionUID = 0L;
 
   public org.mojolang.mojo.core.Value getPropertiesOrThrow(
       java.lang.String key) {
-    if (key == null) { throw new java.lang.NullPointerException(); }
+    if (key == null) { throw new NullPointerException("map key"); }
     java.util.Map<java.lang.String, org.mojolang.mojo.core.Value> map =
         internalGetProperties().getMap();
     if (!map.containsKey(key)) {
@@ -389,7 +389,7 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getTypeBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, type_);
     }
     if (id_ != null) {
@@ -419,7 +419,7 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getTypeBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, type_);
     }
     if (id_ != null) {
@@ -1354,7 +1354,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public boolean containsProperties(
         java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       return internalGetProperties().getMap().containsKey(key);
     }
     /**
@@ -1381,7 +1381,7 @@ private static final long serialVersionUID = 0L;
     public org.mojolang.mojo.core.Value getPropertiesOrDefault(
         java.lang.String key,
         org.mojolang.mojo.core.Value defaultValue) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, org.mojolang.mojo.core.Value> map =
           internalGetProperties().getMap();
       return map.containsKey(key) ? map.get(key) : defaultValue;
@@ -1393,7 +1393,7 @@ private static final long serialVersionUID = 0L;
 
     public org.mojolang.mojo.core.Value getPropertiesOrThrow(
         java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, org.mojolang.mojo.core.Value> map =
           internalGetProperties().getMap();
       if (!map.containsKey(key)) {
@@ -1413,7 +1413,7 @@ private static final long serialVersionUID = 0L;
 
     public Builder removeProperties(
         java.lang.String key) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
       internalGetMutableProperties().getMutableMap()
           .remove(key);
       return this;
@@ -1432,8 +1432,11 @@ private static final long serialVersionUID = 0L;
     public Builder putProperties(
         java.lang.String key,
         org.mojolang.mojo.core.Value value) {
-      if (key == null) { throw new java.lang.NullPointerException(); }
-      if (value == null) { throw new java.lang.NullPointerException(); }
+      if (key == null) { throw new NullPointerException("map key"); }
+      if (value == null) {
+  throw new NullPointerException("map value");
+}
+
       internalGetMutableProperties().getMutableMap()
           .put(key, value);
       return this;

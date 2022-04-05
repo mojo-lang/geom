@@ -1,34 +1,34 @@
 package geom
 
 import (
-	"database/sql/driver"
-	fmt "fmt"
-	"reflect"
+    "database/sql/driver"
+    fmt "fmt"
+    "reflect"
 )
 
-// Implement driver.Valuer and sql.Scanner interfaces on Brand
-func (m Circle) Value() (driver.Value, error) {
-	if m.Radius == 0 && m.Center.IsEmpty() {
-		return nil, nil
-	}
+// Value Implement driver.Valuer and sql.Scanner interfaces on Brand
+func (x Circle) Value() (driver.Value, error) {
+    if x.Radius == 0 && x.Center.IsEmpty() {
+        return nil, nil
+    }
 
-	str := fmt.Sprintf("<(%f,%f),%f>", m.Center.Longitude, m.Center.Latitude, m.Radius)
-	return str, nil
+    str := fmt.Sprintf("<(%f,%f),%f>", x.Center.Longitude, x.Center.Latitude, x.Radius)
+    return str, nil
 }
 
-func (m *Circle) Scan(src interface{}) error {
-	v := reflect.ValueOf(src)
-	if !v.IsValid() || (v.CanAddr() && v.IsNil()) {
-		return nil
-	}
-	switch bs := src.(type) {
-	case []byte:
-		_, err := fmt.Sscanf(string(bs), "<(%f,%f),%f>", &m.Center.Longitude, &m.Center.Latitude, &m.Radius)
-		return err
-	case string:
-		_, err := fmt.Sscanf(bs, "<(%f,%f),%f>", &m.Center.Longitude, &m.Center.Latitude, &m.Radius)
-		return err
-	default:
-		return fmt.Errorf("Could not not Decode type %T -> %T", src, m)
-	}
+func (x *Circle) Scan(src interface{}) error {
+    v := reflect.ValueOf(src)
+    if !v.IsValid() || (v.CanAddr() && v.IsNil()) {
+        return nil
+    }
+    switch bs := src.(type) {
+    case []byte:
+        _, err := fmt.Sscanf(string(bs), "<(%f,%f),%f>", &x.Center.Longitude, &x.Center.Latitude, &x.Radius)
+        return err
+    case string:
+        _, err := fmt.Sscanf(bs, "<(%f,%f),%f>", &x.Center.Longitude, &x.Center.Latitude, &x.Radius)
+        return err
+    default:
+        return fmt.Errorf("Could not not Decode type %T -> %T", src, x)
+    }
 }

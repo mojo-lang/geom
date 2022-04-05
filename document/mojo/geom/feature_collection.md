@@ -3,4 +3,4 @@
 | `type` | `string` |  | 是 |  | the value must be const to "FeatureCollection" |
 | `features` | `Array<mojo.geom.Feature>` |  | 是 |  |
 | `keys` | `Array<string>` |  | 否 |  |
-| `values` | `Array<mojo.core.Value>` |  | 否 |  |
+| `values` | `Array<Value>` |  | 否 |  |

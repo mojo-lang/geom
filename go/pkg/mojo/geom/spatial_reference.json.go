@@ -18,13 +18,15 @@
 package geom
 
 import (
-	jsoniter "github.com/json-iterator/go"
 	"unsafe"
+
+	jsoniter "github.com/json-iterator/go"
+	"github.com/mojo-lang/core/go/pkg/mojo/core"
 )
 
 func init() {
-	jsoniter.RegisterTypeDecoder("geom.SpatialReference", &SpatialReferenceCodec{})
-	jsoniter.RegisterTypeEncoder("geom.SpatialReference", &SpatialReferenceCodec{})
+	core.RegisterJSONTypeDecoder("geom.SpatialReference", &SpatialReferenceCodec{})
+	core.RegisterJSONTypeEncoder("geom.SpatialReference", &SpatialReferenceCodec{})
 }
 
 type SpatialReferenceCodec struct {

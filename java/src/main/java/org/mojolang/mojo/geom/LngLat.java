@@ -142,13 +142,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (longitude_ != 0D) {
+    if (java.lang.Double.doubleToRawLongBits(longitude_) != 0) {
       output.writeDouble(1, longitude_);
     }
-    if (latitude_ != 0D) {
+    if (java.lang.Double.doubleToRawLongBits(latitude_) != 0) {
       output.writeDouble(2, latitude_);
     }
-    if (altitude_ != 0D) {
+    if (java.lang.Double.doubleToRawLongBits(altitude_) != 0) {
       output.writeDouble(3, altitude_);
     }
     unknownFields.writeTo(output);
@@ -160,15 +160,15 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (longitude_ != 0D) {
+    if (java.lang.Double.doubleToRawLongBits(longitude_) != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeDoubleSize(1, longitude_);
     }
-    if (latitude_ != 0D) {
+    if (java.lang.Double.doubleToRawLongBits(latitude_) != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeDoubleSize(2, latitude_);
     }
-    if (altitude_ != 0D) {
+    if (java.lang.Double.doubleToRawLongBits(altitude_) != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeDoubleSize(3, altitude_);
     }

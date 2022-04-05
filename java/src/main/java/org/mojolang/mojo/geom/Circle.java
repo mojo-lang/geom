@@ -194,13 +194,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getTypeBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, type_);
     }
     if (center_ != null) {
       output.writeMessage(2, getCenter());
     }
-    if (radius_ != 0F) {
+    if (java.lang.Float.floatToRawIntBits(radius_) != 0) {
       output.writeFloat(5, radius_);
     }
     unknownFields.writeTo(output);
@@ -212,14 +212,14 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getTypeBytes().isEmpty()) {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, type_);
     }
     if (center_ != null) {
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, getCenter());
     }
-    if (radius_ != 0F) {
+    if (java.lang.Float.floatToRawIntBits(radius_) != 0) {
       size += com.google.protobuf.CodedOutputStream
         .computeFloatSize(5, radius_);
     }
