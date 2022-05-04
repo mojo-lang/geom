@@ -1,8 +1,8 @@
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
+| field | type | format | required | default | description |
 |---|---|---|---|---|---|
-| `type` | `string` |  | 是 |  | the value must be const to "Feature" |
-| `id` | `mojo.core.Id` |  | 否 |  |
-| `geometry` | `mojo.geom.Geometry` |  | 否 |  |
-| `bbox` | `mojo.geom.BoundingBox` |  | 否 |  |
-| `crs` | `string` |  | 否 |  |
-| `properties` | `Map<string, Value>` |  | 否 |  |
+| `type` | `string` |  | Y |  | the value must be const to "Feature" |
+| `id` | `mojo.core.Id` |  | N |  |
+| `geometry` | `mojo.geom.Geometry` |  | N |  |
+| `bbox` | `mojo.geom.BoundingBox` |  | N |  |  |
+| `crs` | `string` |  | N |  |
+| `properties` | `Map<string, mojo.core.Value>` |  | N |  |

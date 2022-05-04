@@ -70,9 +70,9 @@ func (*Geometry) Descriptor() ([]byte, []int) {
 	return file_mojo_geom_geom_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Geometry) GetGeometry() isGeometry_Geometry {
-	if x != nil {
-		return x.Geometry
+func (m *Geometry) GetGeometry() isGeometry_Geometry {
+	if m != nil {
+		return m.Geometry
 	}
 	return nil
 }

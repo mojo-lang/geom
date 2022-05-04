@@ -48,6 +48,10 @@ func (x SpatialReference) Format() string {
 	return strconv.Itoa(int(x))
 }
 
+func (x SpatialReference) ToString() string {
+	return x.Format()
+}
+
 func (x *SpatialReference) Parse(value string) error {
 	if x != nil {
 		s, ok := SpatialReferenceValues[value]

@@ -1,4 +1,4 @@
-| 字段 | 类型 | 格式类型 | 是否必须 | 默认值 | 说明 |
+| field | type | format | required | default | description |
 |---|---|---|---|---|---|
-| `leftBottom` | `mojo.geom.LngLat` |  | 否 |  |
-| `rightTop` | `mojo.geom.LngLat` |  | 否 |  |
+| `leftBottom` | `mojo.geom.LngLat` |  | N |  | 经纬度 |
+| `rightTop` | `mojo.geom.LngLat` |  | N |  | 经纬度 |
