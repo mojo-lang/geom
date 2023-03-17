@@ -13,8 +13,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-@format('{left_bottom.longitude},{left_bottom.latitude},{right_top.longitude},{right_top.latitude}')
-@format('{left_bottom.longitude},{left_bottom.latitude},{left_bottom.altitude},{right_top.longitude},{right_top.latitude},{right_top.altitude}')
+//@format('{left_bottom.longitude},{left_bottom.latitude},{right_top.longitude},{right_top.latitude}')
+//@format('{left_bottom.longitude},{left_bottom.latitude},{left_bottom.altitude},{right_top.longitude},{right_top.latitude},{right_top.altitude}')
 type BoundingBox {
     left_bottom: LngLat @1
     right_top: LngLat @2

@@ -32,108 +32,6 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private Feature(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    int mutable_bitField0_ = 0;
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            type_ = s;
-            break;
-          }
-          case 18: {
-            org.mojolang.mojo.core.Id.Builder subBuilder = null;
-            if (id_ != null) {
-              subBuilder = id_.toBuilder();
-            }
-            id_ = input.readMessage(org.mojolang.mojo.core.Id.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(id_);
-              id_ = subBuilder.buildPartial();
-            }
-
-            break;
-          }
-          case 26: {
-            org.mojolang.mojo.geom.Geometry.Builder subBuilder = null;
-            if (geometry_ != null) {
-              subBuilder = geometry_.toBuilder();
-            }
-            geometry_ = input.readMessage(org.mojolang.mojo.geom.Geometry.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(geometry_);
-              geometry_ = subBuilder.buildPartial();
-            }
-
-            break;
-          }
-          case 34: {
-            org.mojolang.mojo.geom.BoundingBox.Builder subBuilder = null;
-            if (bbox_ != null) {
-              subBuilder = bbox_.toBuilder();
-            }
-            bbox_ = input.readMessage(org.mojolang.mojo.geom.BoundingBox.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(bbox_);
-              bbox_ = subBuilder.buildPartial();
-            }
-
-            break;
-          }
-          case 40: {
-            int rawValue = input.readEnum();
-
-            spatialReference_ = rawValue;
-            break;
-          }
-          case 50: {
-            if (!((mutable_bitField0_ & 0x00000001) != 0)) {
-              properties_ = com.google.protobuf.MapField.newMapField(
-                  PropertiesDefaultEntryHolder.defaultEntry);
-              mutable_bitField0_ |= 0x00000001;
-            }
-            com.google.protobuf.MapEntry<java.lang.String, org.mojolang.mojo.core.Value>
-            properties__ = input.readMessage(
-                PropertiesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-            properties_.getMutableMap().put(
-                properties__.getKey(), properties__.getValue());
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return org.mojolang.mojo.geom.FeatureProto.internal_static_mojo_geom_Feature_descriptor;
@@ -160,7 +58,8 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int TYPE_FIELD_NUMBER = 1;
-  private volatile java.lang.Object type_;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object type_ = "";
   /**
    * <code>string type = 1;</code>
    * @return The type.
@@ -220,7 +119,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public org.mojolang.mojo.core.IdOrBuilder getIdOrBuilder() {
-    return getId();
+    return id_ == null ? org.mojolang.mojo.core.Id.getDefaultInstance() : id_;
   }
 
   public static final int GEOMETRY_FIELD_NUMBER = 3;
@@ -246,7 +145,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public org.mojolang.mojo.geom.GeometryOrBuilder getGeometryOrBuilder() {
-    return getGeometry();
+    return geometry_ == null ? org.mojolang.mojo.geom.Geometry.getDefaultInstance() : geometry_;
   }
 
   public static final int BBOX_FIELD_NUMBER = 4;
@@ -272,11 +171,11 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public org.mojolang.mojo.geom.BoundingBoxOrBuilder getBboxOrBuilder() {
-    return getBbox();
+    return bbox_ == null ? org.mojolang.mojo.geom.BoundingBox.getDefaultInstance() : bbox_;
   }
 
   public static final int SPATIAL_REFERENCE_FIELD_NUMBER = 5;
-  private int spatialReference_;
+  private int spatialReference_ = 0;
   /**
    * <code>.mojo.geom.SpatialReference spatial_reference = 5 [(.mojo.alias) = "crs"];</code>
    * @return The enum numeric value on the wire for spatialReference.
@@ -289,8 +188,7 @@ private static final long serialVersionUID = 0L;
    * @return The spatialReference.
    */
   @java.lang.Override public org.mojolang.mojo.geom.SpatialReference getSpatialReference() {
-    @SuppressWarnings("deprecation")
-    org.mojolang.mojo.geom.SpatialReference result = org.mojolang.mojo.geom.SpatialReference.valueOf(spatialReference_);
+    org.mojolang.mojo.geom.SpatialReference result = org.mojolang.mojo.geom.SpatialReference.forNumber(spatialReference_);
     return result == null ? org.mojolang.mojo.geom.SpatialReference.UNRECOGNIZED : result;
   }
 
@@ -306,6 +204,7 @@ private static final long serialVersionUID = 0L;
                 com.google.protobuf.WireFormat.FieldType.MESSAGE,
                 org.mojolang.mojo.core.Value.getDefaultInstance());
   }
+  @SuppressWarnings("serial")
   private com.google.protobuf.MapField<
       java.lang.String, org.mojolang.mojo.core.Value> properties_;
   private com.google.protobuf.MapField<java.lang.String, org.mojolang.mojo.core.Value>
@@ -316,14 +215,12 @@ private static final long serialVersionUID = 0L;
     }
     return properties_;
   }
-
   public int getPropertiesCount() {
     return internalGetProperties().getMap().size();
   }
   /**
    * <code>map&lt;string, .mojo.core.Value&gt; properties = 6;</code>
    */
-
   @java.lang.Override
   public boolean containsProperties(
       java.lang.String key) {
@@ -342,7 +239,6 @@ private static final long serialVersionUID = 0L;
    * <code>map&lt;string, .mojo.core.Value&gt; properties = 6;</code>
    */
   @java.lang.Override
-
   public java.util.Map<java.lang.String, org.mojolang.mojo.core.Value> getPropertiesMap() {
     return internalGetProperties().getMap();
   }
@@ -350,10 +246,11 @@ private static final long serialVersionUID = 0L;
    * <code>map&lt;string, .mojo.core.Value&gt; properties = 6;</code>
    */
   @java.lang.Override
-
-  public org.mojolang.mojo.core.Value getPropertiesOrDefault(
+  public /* nullable */
+org.mojolang.mojo.core.Value getPropertiesOrDefault(
       java.lang.String key,
-      org.mojolang.mojo.core.Value defaultValue) {
+      /* nullable */
+org.mojolang.mojo.core.Value defaultValue) {
     if (key == null) { throw new NullPointerException("map key"); }
     java.util.Map<java.lang.String, org.mojolang.mojo.core.Value> map =
         internalGetProperties().getMap();
@@ -363,7 +260,6 @@ private static final long serialVersionUID = 0L;
    * <code>map&lt;string, .mojo.core.Value&gt; properties = 6;</code>
    */
   @java.lang.Override
-
   public org.mojolang.mojo.core.Value getPropertiesOrThrow(
       java.lang.String key) {
     if (key == null) { throw new NullPointerException("map key"); }
@@ -410,7 +306,7 @@ private static final long serialVersionUID = 0L;
         internalGetProperties(),
         PropertiesDefaultEntryHolder.defaultEntry,
         6);
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -448,7 +344,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, properties__);
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -483,7 +379,7 @@ private static final long serialVersionUID = 0L;
     if (spatialReference_ != other.spatialReference_) return false;
     if (!internalGetProperties().equals(
         other.internalGetProperties())) return false;
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -514,7 +410,7 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + PROPERTIES_FIELD_NUMBER;
       hash = (53 * hash) + internalGetProperties().hashCode();
     }
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
@@ -653,44 +549,35 @@ private static final long serialVersionUID = 0L;
 
     // Construct using org.mojolang.mojo.geom.Feature.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      bitField0_ = 0;
       type_ = "";
-
-      if (idBuilder_ == null) {
-        id_ = null;
-      } else {
-        id_ = null;
+      id_ = null;
+      if (idBuilder_ != null) {
+        idBuilder_.dispose();
         idBuilder_ = null;
       }
-      if (geometryBuilder_ == null) {
-        geometry_ = null;
-      } else {
-        geometry_ = null;
+      geometry_ = null;
+      if (geometryBuilder_ != null) {
+        geometryBuilder_.dispose();
         geometryBuilder_ = null;
       }
-      if (bboxBuilder_ == null) {
-        bbox_ = null;
-      } else {
-        bbox_ = null;
+      bbox_ = null;
+      if (bboxBuilder_ != null) {
+        bboxBuilder_.dispose();
         bboxBuilder_ = null;
       }
       spatialReference_ = 0;
-
       internalGetMutableProperties().clear();
       return this;
     }
@@ -718,28 +605,38 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public org.mojolang.mojo.geom.Feature buildPartial() {
       org.mojolang.mojo.geom.Feature result = new org.mojolang.mojo.geom.Feature(this);
-      int from_bitField0_ = bitField0_;
-      result.type_ = type_;
-      if (idBuilder_ == null) {
-        result.id_ = id_;
-      } else {
-        result.id_ = idBuilder_.build();
-      }
-      if (geometryBuilder_ == null) {
-        result.geometry_ = geometry_;
-      } else {
-        result.geometry_ = geometryBuilder_.build();
-      }
-      if (bboxBuilder_ == null) {
-        result.bbox_ = bbox_;
-      } else {
-        result.bbox_ = bboxBuilder_.build();
-      }
-      result.spatialReference_ = spatialReference_;
-      result.properties_ = internalGetProperties();
-      result.properties_.makeImmutable();
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
+    }
+
+    private void buildPartial0(org.mojolang.mojo.geom.Feature result) {
+      int from_bitField0_ = bitField0_;
+      if (((from_bitField0_ & 0x00000001) != 0)) {
+        result.type_ = type_;
+      }
+      if (((from_bitField0_ & 0x00000002) != 0)) {
+        result.id_ = idBuilder_ == null
+            ? id_
+            : idBuilder_.build();
+      }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.geometry_ = geometryBuilder_ == null
+            ? geometry_
+            : geometryBuilder_.build();
+      }
+      if (((from_bitField0_ & 0x00000008) != 0)) {
+        result.bbox_ = bboxBuilder_ == null
+            ? bbox_
+            : bboxBuilder_.build();
+      }
+      if (((from_bitField0_ & 0x00000010) != 0)) {
+        result.spatialReference_ = spatialReference_;
+      }
+      if (((from_bitField0_ & 0x00000020) != 0)) {
+        result.properties_ = internalGetProperties();
+        result.properties_.makeImmutable();
+      }
     }
 
     @java.lang.Override
@@ -788,6 +685,7 @@ private static final long serialVersionUID = 0L;
       if (other == org.mojolang.mojo.geom.Feature.getDefaultInstance()) return this;
       if (!other.getType().isEmpty()) {
         type_ = other.type_;
+        bitField0_ |= 0x00000001;
         onChanged();
       }
       if (other.hasId()) {
@@ -804,7 +702,8 @@ private static final long serialVersionUID = 0L;
       }
       internalGetMutableProperties().mergeFrom(
           other.internalGetProperties());
-      this.mergeUnknownFields(other.unknownFields);
+      bitField0_ |= 0x00000020;
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -819,17 +718,70 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      org.mojolang.mojo.geom.Feature parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              type_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 10
+            case 18: {
+              input.readMessage(
+                  getIdFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 18
+            case 26: {
+              input.readMessage(
+                  getGeometryFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 26
+            case 34: {
+              input.readMessage(
+                  getBboxFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000008;
+              break;
+            } // case 34
+            case 40: {
+              spatialReference_ = input.readEnum();
+              bitField0_ |= 0x00000010;
+              break;
+            } // case 40
+            case 50: {
+              com.google.protobuf.MapEntry<java.lang.String, org.mojolang.mojo.core.Value>
+              properties__ = input.readMessage(
+                  PropertiesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+              internalGetMutableProperties().getMutableMap().put(
+                  properties__.getKey(), properties__.getValue());
+              bitField0_ |= 0x00000020;
+              break;
+            } // case 50
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (org.mojolang.mojo.geom.Feature) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
     private int bitField0_;
@@ -875,11 +827,9 @@ private static final long serialVersionUID = 0L;
      */
     public Builder setType(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      if (value == null) { throw new NullPointerException(); }
       type_ = value;
+      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -888,8 +838,8 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearType() {
-      
       type_ = getDefaultInstance().getType();
+      bitField0_ = (bitField0_ & ~0x00000001);
       onChanged();
       return this;
     }
@@ -900,12 +850,10 @@ private static final long serialVersionUID = 0L;
      */
     public Builder setTypeBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
       type_ = value;
+      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -918,7 +866,7 @@ private static final long serialVersionUID = 0L;
      * @return Whether the id field is set.
      */
     public boolean hasId() {
-      return idBuilder_ != null || id_ != null;
+      return ((bitField0_ & 0x00000002) != 0);
     }
     /**
      * <code>.mojo.core.Id id = 2;</code>
@@ -940,11 +888,11 @@ private static final long serialVersionUID = 0L;
           throw new NullPointerException();
         }
         id_ = value;
-        onChanged();
       } else {
         idBuilder_.setMessage(value);
       }
-
+      bitField0_ |= 0x00000002;
+      onChanged();
       return this;
     }
     /**
@@ -954,11 +902,11 @@ private static final long serialVersionUID = 0L;
         org.mojolang.mojo.core.Id.Builder builderForValue) {
       if (idBuilder_ == null) {
         id_ = builderForValue.build();
-        onChanged();
       } else {
         idBuilder_.setMessage(builderForValue.build());
       }
-
+      bitField0_ |= 0x00000002;
+      onChanged();
       return this;
     }
     /**
@@ -966,38 +914,38 @@ private static final long serialVersionUID = 0L;
      */
     public Builder mergeId(org.mojolang.mojo.core.Id value) {
       if (idBuilder_ == null) {
-        if (id_ != null) {
-          id_ =
-            org.mojolang.mojo.core.Id.newBuilder(id_).mergeFrom(value).buildPartial();
+        if (((bitField0_ & 0x00000002) != 0) &&
+          id_ != null &&
+          id_ != org.mojolang.mojo.core.Id.getDefaultInstance()) {
+          getIdBuilder().mergeFrom(value);
         } else {
           id_ = value;
         }
-        onChanged();
       } else {
         idBuilder_.mergeFrom(value);
       }
-
+      bitField0_ |= 0x00000002;
+      onChanged();
       return this;
     }
     /**
      * <code>.mojo.core.Id id = 2;</code>
      */
     public Builder clearId() {
-      if (idBuilder_ == null) {
-        id_ = null;
-        onChanged();
-      } else {
-        id_ = null;
+      bitField0_ = (bitField0_ & ~0x00000002);
+      id_ = null;
+      if (idBuilder_ != null) {
+        idBuilder_.dispose();
         idBuilder_ = null;
       }
-
+      onChanged();
       return this;
     }
     /**
      * <code>.mojo.core.Id id = 2;</code>
      */
     public org.mojolang.mojo.core.Id.Builder getIdBuilder() {
-      
+      bitField0_ |= 0x00000002;
       onChanged();
       return getIdFieldBuilder().getBuilder();
     }
@@ -1037,7 +985,7 @@ private static final long serialVersionUID = 0L;
      * @return Whether the geometry field is set.
      */
     public boolean hasGeometry() {
-      return geometryBuilder_ != null || geometry_ != null;
+      return ((bitField0_ & 0x00000004) != 0);
     }
     /**
      * <code>.mojo.geom.Geometry geometry = 3;</code>
@@ -1059,11 +1007,11 @@ private static final long serialVersionUID = 0L;
           throw new NullPointerException();
         }
         geometry_ = value;
-        onChanged();
       } else {
         geometryBuilder_.setMessage(value);
       }
-
+      bitField0_ |= 0x00000004;
+      onChanged();
       return this;
     }
     /**
@@ -1073,11 +1021,11 @@ private static final long serialVersionUID = 0L;
         org.mojolang.mojo.geom.Geometry.Builder builderForValue) {
       if (geometryBuilder_ == null) {
         geometry_ = builderForValue.build();
-        onChanged();
       } else {
         geometryBuilder_.setMessage(builderForValue.build());
       }
-
+      bitField0_ |= 0x00000004;
+      onChanged();
       return this;
     }
     /**
@@ -1085,38 +1033,38 @@ private static final long serialVersionUID = 0L;
      */
     public Builder mergeGeometry(org.mojolang.mojo.geom.Geometry value) {
       if (geometryBuilder_ == null) {
-        if (geometry_ != null) {
-          geometry_ =
-            org.mojolang.mojo.geom.Geometry.newBuilder(geometry_).mergeFrom(value).buildPartial();
+        if (((bitField0_ & 0x00000004) != 0) &&
+          geometry_ != null &&
+          geometry_ != org.mojolang.mojo.geom.Geometry.getDefaultInstance()) {
+          getGeometryBuilder().mergeFrom(value);
         } else {
           geometry_ = value;
         }
-        onChanged();
       } else {
         geometryBuilder_.mergeFrom(value);
       }
-
+      bitField0_ |= 0x00000004;
+      onChanged();
       return this;
     }
     /**
      * <code>.mojo.geom.Geometry geometry = 3;</code>
      */
     public Builder clearGeometry() {
-      if (geometryBuilder_ == null) {
-        geometry_ = null;
-        onChanged();
-      } else {
-        geometry_ = null;
+      bitField0_ = (bitField0_ & ~0x00000004);
+      geometry_ = null;
+      if (geometryBuilder_ != null) {
+        geometryBuilder_.dispose();
         geometryBuilder_ = null;
       }
-
+      onChanged();
       return this;
     }
     /**
      * <code>.mojo.geom.Geometry geometry = 3;</code>
      */
     public org.mojolang.mojo.geom.Geometry.Builder getGeometryBuilder() {
-      
+      bitField0_ |= 0x00000004;
       onChanged();
       return getGeometryFieldBuilder().getBuilder();
     }
@@ -1156,7 +1104,7 @@ private static final long serialVersionUID = 0L;
      * @return Whether the bbox field is set.
      */
     public boolean hasBbox() {
-      return bboxBuilder_ != null || bbox_ != null;
+      return ((bitField0_ & 0x00000008) != 0);
     }
     /**
      * <code>.mojo.geom.BoundingBox bbox = 4;</code>
@@ -1178,11 +1126,11 @@ private static final long serialVersionUID = 0L;
           throw new NullPointerException();
         }
         bbox_ = value;
-        onChanged();
       } else {
         bboxBuilder_.setMessage(value);
       }
-
+      bitField0_ |= 0x00000008;
+      onChanged();
       return this;
     }
     /**
@@ -1192,11 +1140,11 @@ private static final long serialVersionUID = 0L;
         org.mojolang.mojo.geom.BoundingBox.Builder builderForValue) {
       if (bboxBuilder_ == null) {
         bbox_ = builderForValue.build();
-        onChanged();
       } else {
         bboxBuilder_.setMessage(builderForValue.build());
       }
-
+      bitField0_ |= 0x00000008;
+      onChanged();
       return this;
     }
     /**
@@ -1204,38 +1152,38 @@ private static final long serialVersionUID = 0L;
      */
     public Builder mergeBbox(org.mojolang.mojo.geom.BoundingBox value) {
       if (bboxBuilder_ == null) {
-        if (bbox_ != null) {
-          bbox_ =
-            org.mojolang.mojo.geom.BoundingBox.newBuilder(bbox_).mergeFrom(value).buildPartial();
+        if (((bitField0_ & 0x00000008) != 0) &&
+          bbox_ != null &&
+          bbox_ != org.mojolang.mojo.geom.BoundingBox.getDefaultInstance()) {
+          getBboxBuilder().mergeFrom(value);
         } else {
           bbox_ = value;
         }
-        onChanged();
       } else {
         bboxBuilder_.mergeFrom(value);
       }
-
+      bitField0_ |= 0x00000008;
+      onChanged();
       return this;
     }
     /**
      * <code>.mojo.geom.BoundingBox bbox = 4;</code>
      */
     public Builder clearBbox() {
-      if (bboxBuilder_ == null) {
-        bbox_ = null;
-        onChanged();
-      } else {
-        bbox_ = null;
+      bitField0_ = (bitField0_ & ~0x00000008);
+      bbox_ = null;
+      if (bboxBuilder_ != null) {
+        bboxBuilder_.dispose();
         bboxBuilder_ = null;
       }
-
+      onChanged();
       return this;
     }
     /**
      * <code>.mojo.geom.BoundingBox bbox = 4;</code>
      */
     public org.mojolang.mojo.geom.BoundingBox.Builder getBboxBuilder() {
-      
+      bitField0_ |= 0x00000008;
       onChanged();
       return getBboxFieldBuilder().getBuilder();
     }
@@ -1281,8 +1229,8 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setSpatialReferenceValue(int value) {
-      
       spatialReference_ = value;
+      bitField0_ |= 0x00000010;
       onChanged();
       return this;
     }
@@ -1292,8 +1240,7 @@ private static final long serialVersionUID = 0L;
      */
     @java.lang.Override
     public org.mojolang.mojo.geom.SpatialReference getSpatialReference() {
-      @SuppressWarnings("deprecation")
-      org.mojolang.mojo.geom.SpatialReference result = org.mojolang.mojo.geom.SpatialReference.valueOf(spatialReference_);
+      org.mojolang.mojo.geom.SpatialReference result = org.mojolang.mojo.geom.SpatialReference.forNumber(spatialReference_);
       return result == null ? org.mojolang.mojo.geom.SpatialReference.UNRECOGNIZED : result;
     }
     /**
@@ -1305,7 +1252,7 @@ private static final long serialVersionUID = 0L;
       if (value == null) {
         throw new NullPointerException();
       }
-      
+      bitField0_ |= 0x00000010;
       spatialReference_ = value.getNumber();
       onChanged();
       return this;
@@ -1315,7 +1262,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearSpatialReference() {
-      
+      bitField0_ = (bitField0_ & ~0x00000010);
       spatialReference_ = 0;
       onChanged();
       return this;
@@ -1324,7 +1271,7 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.MapField<
         java.lang.String, org.mojolang.mojo.core.Value> properties_;
     private com.google.protobuf.MapField<java.lang.String, org.mojolang.mojo.core.Value>
-    internalGetProperties() {
+        internalGetProperties() {
       if (properties_ == null) {
         return com.google.protobuf.MapField.emptyMapField(
             PropertiesDefaultEntryHolder.defaultEntry);
@@ -1332,8 +1279,7 @@ private static final long serialVersionUID = 0L;
       return properties_;
     }
     private com.google.protobuf.MapField<java.lang.String, org.mojolang.mojo.core.Value>
-    internalGetMutableProperties() {
-      onChanged();;
+        internalGetMutableProperties() {
       if (properties_ == null) {
         properties_ = com.google.protobuf.MapField.newMapField(
             PropertiesDefaultEntryHolder.defaultEntry);
@@ -1341,16 +1287,16 @@ private static final long serialVersionUID = 0L;
       if (!properties_.isMutable()) {
         properties_ = properties_.copy();
       }
+      bitField0_ |= 0x00000020;
+      onChanged();
       return properties_;
     }
-
     public int getPropertiesCount() {
       return internalGetProperties().getMap().size();
     }
     /**
      * <code>map&lt;string, .mojo.core.Value&gt; properties = 6;</code>
      */
-
     @java.lang.Override
     public boolean containsProperties(
         java.lang.String key) {
@@ -1369,7 +1315,6 @@ private static final long serialVersionUID = 0L;
      * <code>map&lt;string, .mojo.core.Value&gt; properties = 6;</code>
      */
     @java.lang.Override
-
     public java.util.Map<java.lang.String, org.mojolang.mojo.core.Value> getPropertiesMap() {
       return internalGetProperties().getMap();
     }
@@ -1377,10 +1322,11 @@ private static final long serialVersionUID = 0L;
      * <code>map&lt;string, .mojo.core.Value&gt; properties = 6;</code>
      */
     @java.lang.Override
-
-    public org.mojolang.mojo.core.Value getPropertiesOrDefault(
+    public /* nullable */
+org.mojolang.mojo.core.Value getPropertiesOrDefault(
         java.lang.String key,
-        org.mojolang.mojo.core.Value defaultValue) {
+        /* nullable */
+org.mojolang.mojo.core.Value defaultValue) {
       if (key == null) { throw new NullPointerException("map key"); }
       java.util.Map<java.lang.String, org.mojolang.mojo.core.Value> map =
           internalGetProperties().getMap();
@@ -1390,7 +1336,6 @@ private static final long serialVersionUID = 0L;
      * <code>map&lt;string, .mojo.core.Value&gt; properties = 6;</code>
      */
     @java.lang.Override
-
     public org.mojolang.mojo.core.Value getPropertiesOrThrow(
         java.lang.String key) {
       if (key == null) { throw new NullPointerException("map key"); }
@@ -1401,8 +1346,8 @@ private static final long serialVersionUID = 0L;
       }
       return map.get(key);
     }
-
     public Builder clearProperties() {
+      bitField0_ = (bitField0_ & ~0x00000020);
       internalGetMutableProperties().getMutableMap()
           .clear();
       return this;
@@ -1410,7 +1355,6 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>map&lt;string, .mojo.core.Value&gt; properties = 6;</code>
      */
-
     public Builder removeProperties(
         java.lang.String key) {
       if (key == null) { throw new NullPointerException("map key"); }
@@ -1423,7 +1367,8 @@ private static final long serialVersionUID = 0L;
      */
     @java.lang.Deprecated
     public java.util.Map<java.lang.String, org.mojolang.mojo.core.Value>
-    getMutableProperties() {
+        getMutableProperties() {
+      bitField0_ |= 0x00000020;
       return internalGetMutableProperties().getMutableMap();
     }
     /**
@@ -1433,22 +1378,20 @@ private static final long serialVersionUID = 0L;
         java.lang.String key,
         org.mojolang.mojo.core.Value value) {
       if (key == null) { throw new NullPointerException("map key"); }
-      if (value == null) {
-  throw new NullPointerException("map value");
-}
-
+      if (value == null) { throw new NullPointerException("map value"); }
       internalGetMutableProperties().getMutableMap()
           .put(key, value);
+      bitField0_ |= 0x00000020;
       return this;
     }
     /**
      * <code>map&lt;string, .mojo.core.Value&gt; properties = 6;</code>
      */
-
     public Builder putAllProperties(
         java.util.Map<java.lang.String, org.mojolang.mojo.core.Value> values) {
       internalGetMutableProperties().getMutableMap()
           .putAll(values);
+      bitField0_ |= 0x00000020;
       return this;
     }
     @java.lang.Override
@@ -1484,7 +1427,18 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new Feature(input, extensionRegistry);
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
     }
   };
 

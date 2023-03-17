@@ -30,169 +30,6 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private GeoJson(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 10: {
-            org.mojolang.mojo.geom.Point.Builder subBuilder = null;
-            if (geoJsonCase_ == 1) {
-              subBuilder = ((org.mojolang.mojo.geom.Point) geoJson_).toBuilder();
-            }
-            geoJson_ =
-                input.readMessage(org.mojolang.mojo.geom.Point.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((org.mojolang.mojo.geom.Point) geoJson_);
-              geoJson_ = subBuilder.buildPartial();
-            }
-            geoJsonCase_ = 1;
-            break;
-          }
-          case 18: {
-            org.mojolang.mojo.geom.MultiPoint.Builder subBuilder = null;
-            if (geoJsonCase_ == 2) {
-              subBuilder = ((org.mojolang.mojo.geom.MultiPoint) geoJson_).toBuilder();
-            }
-            geoJson_ =
-                input.readMessage(org.mojolang.mojo.geom.MultiPoint.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((org.mojolang.mojo.geom.MultiPoint) geoJson_);
-              geoJson_ = subBuilder.buildPartial();
-            }
-            geoJsonCase_ = 2;
-            break;
-          }
-          case 26: {
-            org.mojolang.mojo.geom.LineString.Builder subBuilder = null;
-            if (geoJsonCase_ == 3) {
-              subBuilder = ((org.mojolang.mojo.geom.LineString) geoJson_).toBuilder();
-            }
-            geoJson_ =
-                input.readMessage(org.mojolang.mojo.geom.LineString.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((org.mojolang.mojo.geom.LineString) geoJson_);
-              geoJson_ = subBuilder.buildPartial();
-            }
-            geoJsonCase_ = 3;
-            break;
-          }
-          case 34: {
-            org.mojolang.mojo.geom.MultiLineString.Builder subBuilder = null;
-            if (geoJsonCase_ == 4) {
-              subBuilder = ((org.mojolang.mojo.geom.MultiLineString) geoJson_).toBuilder();
-            }
-            geoJson_ =
-                input.readMessage(org.mojolang.mojo.geom.MultiLineString.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((org.mojolang.mojo.geom.MultiLineString) geoJson_);
-              geoJson_ = subBuilder.buildPartial();
-            }
-            geoJsonCase_ = 4;
-            break;
-          }
-          case 42: {
-            org.mojolang.mojo.geom.Polygon.Builder subBuilder = null;
-            if (geoJsonCase_ == 5) {
-              subBuilder = ((org.mojolang.mojo.geom.Polygon) geoJson_).toBuilder();
-            }
-            geoJson_ =
-                input.readMessage(org.mojolang.mojo.geom.Polygon.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((org.mojolang.mojo.geom.Polygon) geoJson_);
-              geoJson_ = subBuilder.buildPartial();
-            }
-            geoJsonCase_ = 5;
-            break;
-          }
-          case 50: {
-            org.mojolang.mojo.geom.MultiPolygon.Builder subBuilder = null;
-            if (geoJsonCase_ == 6) {
-              subBuilder = ((org.mojolang.mojo.geom.MultiPolygon) geoJson_).toBuilder();
-            }
-            geoJson_ =
-                input.readMessage(org.mojolang.mojo.geom.MultiPolygon.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((org.mojolang.mojo.geom.MultiPolygon) geoJson_);
-              geoJson_ = subBuilder.buildPartial();
-            }
-            geoJsonCase_ = 6;
-            break;
-          }
-          case 58: {
-            org.mojolang.mojo.geom.GeometryCollection.Builder subBuilder = null;
-            if (geoJsonCase_ == 7) {
-              subBuilder = ((org.mojolang.mojo.geom.GeometryCollection) geoJson_).toBuilder();
-            }
-            geoJson_ =
-                input.readMessage(org.mojolang.mojo.geom.GeometryCollection.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((org.mojolang.mojo.geom.GeometryCollection) geoJson_);
-              geoJson_ = subBuilder.buildPartial();
-            }
-            geoJsonCase_ = 7;
-            break;
-          }
-          case 82: {
-            org.mojolang.mojo.geom.Feature.Builder subBuilder = null;
-            if (geoJsonCase_ == 10) {
-              subBuilder = ((org.mojolang.mojo.geom.Feature) geoJson_).toBuilder();
-            }
-            geoJson_ =
-                input.readMessage(org.mojolang.mojo.geom.Feature.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((org.mojolang.mojo.geom.Feature) geoJson_);
-              geoJson_ = subBuilder.buildPartial();
-            }
-            geoJsonCase_ = 10;
-            break;
-          }
-          case 90: {
-            org.mojolang.mojo.geom.FeatureCollection.Builder subBuilder = null;
-            if (geoJsonCase_ == 11) {
-              subBuilder = ((org.mojolang.mojo.geom.FeatureCollection) geoJson_).toBuilder();
-            }
-            geoJson_ =
-                input.readMessage(org.mojolang.mojo.geom.FeatureCollection.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((org.mojolang.mojo.geom.FeatureCollection) geoJson_);
-              geoJson_ = subBuilder.buildPartial();
-            }
-            geoJsonCase_ = 11;
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return org.mojolang.mojo.geom.GeoJsonProto.internal_static_mojo_geom_GeoJson_descriptor;
@@ -581,7 +418,7 @@ private static final long serialVersionUID = 0L;
     if (geoJsonCase_ == 11) {
       output.writeMessage(11, (org.mojolang.mojo.geom.FeatureCollection) geoJson_);
     }
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -626,7 +463,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(11, (org.mojolang.mojo.geom.FeatureCollection) geoJson_);
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -682,7 +519,7 @@ private static final long serialVersionUID = 0L;
       case 0:
       default:
     }
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -733,7 +570,7 @@ private static final long serialVersionUID = 0L;
       case 0:
       default:
     }
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
@@ -850,22 +687,45 @@ private static final long serialVersionUID = 0L;
 
     // Construct using org.mojolang.mojo.geom.GeoJson.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      bitField0_ = 0;
+      if (pointBuilder_ != null) {
+        pointBuilder_.clear();
+      }
+      if (multiPointBuilder_ != null) {
+        multiPointBuilder_.clear();
+      }
+      if (lineStringBuilder_ != null) {
+        lineStringBuilder_.clear();
+      }
+      if (multiLineStringBuilder_ != null) {
+        multiLineStringBuilder_.clear();
+      }
+      if (polygonBuilder_ != null) {
+        polygonBuilder_.clear();
+      }
+      if (multiPolygonBuilder_ != null) {
+        multiPolygonBuilder_.clear();
+      }
+      if (geometryCollectionBuilder_ != null) {
+        geometryCollectionBuilder_.clear();
+      }
+      if (featureBuilder_ != null) {
+        featureBuilder_.clear();
+      }
+      if (featureCollectionBuilder_ != null) {
+        featureCollectionBuilder_.clear();
+      }
       geoJsonCase_ = 0;
       geoJson_ = null;
       return this;
@@ -894,72 +754,55 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public org.mojolang.mojo.geom.GeoJson buildPartial() {
       org.mojolang.mojo.geom.GeoJson result = new org.mojolang.mojo.geom.GeoJson(this);
-      if (geoJsonCase_ == 1) {
-        if (pointBuilder_ == null) {
-          result.geoJson_ = geoJson_;
-        } else {
-          result.geoJson_ = pointBuilder_.build();
-        }
-      }
-      if (geoJsonCase_ == 2) {
-        if (multiPointBuilder_ == null) {
-          result.geoJson_ = geoJson_;
-        } else {
-          result.geoJson_ = multiPointBuilder_.build();
-        }
-      }
-      if (geoJsonCase_ == 3) {
-        if (lineStringBuilder_ == null) {
-          result.geoJson_ = geoJson_;
-        } else {
-          result.geoJson_ = lineStringBuilder_.build();
-        }
-      }
-      if (geoJsonCase_ == 4) {
-        if (multiLineStringBuilder_ == null) {
-          result.geoJson_ = geoJson_;
-        } else {
-          result.geoJson_ = multiLineStringBuilder_.build();
-        }
-      }
-      if (geoJsonCase_ == 5) {
-        if (polygonBuilder_ == null) {
-          result.geoJson_ = geoJson_;
-        } else {
-          result.geoJson_ = polygonBuilder_.build();
-        }
-      }
-      if (geoJsonCase_ == 6) {
-        if (multiPolygonBuilder_ == null) {
-          result.geoJson_ = geoJson_;
-        } else {
-          result.geoJson_ = multiPolygonBuilder_.build();
-        }
-      }
-      if (geoJsonCase_ == 7) {
-        if (geometryCollectionBuilder_ == null) {
-          result.geoJson_ = geoJson_;
-        } else {
-          result.geoJson_ = geometryCollectionBuilder_.build();
-        }
-      }
-      if (geoJsonCase_ == 10) {
-        if (featureBuilder_ == null) {
-          result.geoJson_ = geoJson_;
-        } else {
-          result.geoJson_ = featureBuilder_.build();
-        }
-      }
-      if (geoJsonCase_ == 11) {
-        if (featureCollectionBuilder_ == null) {
-          result.geoJson_ = geoJson_;
-        } else {
-          result.geoJson_ = featureCollectionBuilder_.build();
-        }
-      }
-      result.geoJsonCase_ = geoJsonCase_;
+      if (bitField0_ != 0) { buildPartial0(result); }
+      buildPartialOneofs(result);
       onBuilt();
       return result;
+    }
+
+    private void buildPartial0(org.mojolang.mojo.geom.GeoJson result) {
+      int from_bitField0_ = bitField0_;
+    }
+
+    private void buildPartialOneofs(org.mojolang.mojo.geom.GeoJson result) {
+      result.geoJsonCase_ = geoJsonCase_;
+      result.geoJson_ = this.geoJson_;
+      if (geoJsonCase_ == 1 &&
+          pointBuilder_ != null) {
+        result.geoJson_ = pointBuilder_.build();
+      }
+      if (geoJsonCase_ == 2 &&
+          multiPointBuilder_ != null) {
+        result.geoJson_ = multiPointBuilder_.build();
+      }
+      if (geoJsonCase_ == 3 &&
+          lineStringBuilder_ != null) {
+        result.geoJson_ = lineStringBuilder_.build();
+      }
+      if (geoJsonCase_ == 4 &&
+          multiLineStringBuilder_ != null) {
+        result.geoJson_ = multiLineStringBuilder_.build();
+      }
+      if (geoJsonCase_ == 5 &&
+          polygonBuilder_ != null) {
+        result.geoJson_ = polygonBuilder_.build();
+      }
+      if (geoJsonCase_ == 6 &&
+          multiPolygonBuilder_ != null) {
+        result.geoJson_ = multiPolygonBuilder_.build();
+      }
+      if (geoJsonCase_ == 7 &&
+          geometryCollectionBuilder_ != null) {
+        result.geoJson_ = geometryCollectionBuilder_.build();
+      }
+      if (geoJsonCase_ == 10 &&
+          featureBuilder_ != null) {
+        result.geoJson_ = featureBuilder_.build();
+      }
+      if (geoJsonCase_ == 11 &&
+          featureCollectionBuilder_ != null) {
+        result.geoJson_ = featureCollectionBuilder_.build();
+      }
     }
 
     @java.lang.Override
@@ -1047,7 +890,7 @@ private static final long serialVersionUID = 0L;
           break;
         }
       }
-      this.mergeUnknownFields(other.unknownFields);
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -1062,17 +905,93 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      org.mojolang.mojo.geom.GeoJson parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              input.readMessage(
+                  getPointFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              geoJsonCase_ = 1;
+              break;
+            } // case 10
+            case 18: {
+              input.readMessage(
+                  getMultiPointFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              geoJsonCase_ = 2;
+              break;
+            } // case 18
+            case 26: {
+              input.readMessage(
+                  getLineStringFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              geoJsonCase_ = 3;
+              break;
+            } // case 26
+            case 34: {
+              input.readMessage(
+                  getMultiLineStringFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              geoJsonCase_ = 4;
+              break;
+            } // case 34
+            case 42: {
+              input.readMessage(
+                  getPolygonFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              geoJsonCase_ = 5;
+              break;
+            } // case 42
+            case 50: {
+              input.readMessage(
+                  getMultiPolygonFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              geoJsonCase_ = 6;
+              break;
+            } // case 50
+            case 58: {
+              input.readMessage(
+                  getGeometryCollectionFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              geoJsonCase_ = 7;
+              break;
+            } // case 58
+            case 82: {
+              input.readMessage(
+                  getFeatureFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              geoJsonCase_ = 10;
+              break;
+            } // case 82
+            case 90: {
+              input.readMessage(
+                  getFeatureCollectionFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              geoJsonCase_ = 11;
+              break;
+            } // case 90
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (org.mojolang.mojo.geom.GeoJson) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
     private int geoJsonCase_ = 0;
@@ -1090,6 +1009,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private int bitField0_;
 
     private com.google.protobuf.SingleFieldBuilderV3<
         org.mojolang.mojo.geom.Point, org.mojolang.mojo.geom.Point.Builder, org.mojolang.mojo.geom.PointOrBuilder> pointBuilder_;
@@ -1165,8 +1085,9 @@ private static final long serialVersionUID = 0L;
       } else {
         if (geoJsonCase_ == 1) {
           pointBuilder_.mergeFrom(value);
+        } else {
+          pointBuilder_.setMessage(value);
         }
-        pointBuilder_.setMessage(value);
       }
       geoJsonCase_ = 1;
       return this;
@@ -1228,7 +1149,7 @@ private static final long serialVersionUID = 0L;
         geoJson_ = null;
       }
       geoJsonCase_ = 1;
-      onChanged();;
+      onChanged();
       return pointBuilder_;
     }
 
@@ -1306,8 +1227,9 @@ private static final long serialVersionUID = 0L;
       } else {
         if (geoJsonCase_ == 2) {
           multiPointBuilder_.mergeFrom(value);
+        } else {
+          multiPointBuilder_.setMessage(value);
         }
-        multiPointBuilder_.setMessage(value);
       }
       geoJsonCase_ = 2;
       return this;
@@ -1369,7 +1291,7 @@ private static final long serialVersionUID = 0L;
         geoJson_ = null;
       }
       geoJsonCase_ = 2;
-      onChanged();;
+      onChanged();
       return multiPointBuilder_;
     }
 
@@ -1447,8 +1369,9 @@ private static final long serialVersionUID = 0L;
       } else {
         if (geoJsonCase_ == 3) {
           lineStringBuilder_.mergeFrom(value);
+        } else {
+          lineStringBuilder_.setMessage(value);
         }
-        lineStringBuilder_.setMessage(value);
       }
       geoJsonCase_ = 3;
       return this;
@@ -1510,7 +1433,7 @@ private static final long serialVersionUID = 0L;
         geoJson_ = null;
       }
       geoJsonCase_ = 3;
-      onChanged();;
+      onChanged();
       return lineStringBuilder_;
     }
 
@@ -1588,8 +1511,9 @@ private static final long serialVersionUID = 0L;
       } else {
         if (geoJsonCase_ == 4) {
           multiLineStringBuilder_.mergeFrom(value);
+        } else {
+          multiLineStringBuilder_.setMessage(value);
         }
-        multiLineStringBuilder_.setMessage(value);
       }
       geoJsonCase_ = 4;
       return this;
@@ -1651,7 +1575,7 @@ private static final long serialVersionUID = 0L;
         geoJson_ = null;
       }
       geoJsonCase_ = 4;
-      onChanged();;
+      onChanged();
       return multiLineStringBuilder_;
     }
 
@@ -1729,8 +1653,9 @@ private static final long serialVersionUID = 0L;
       } else {
         if (geoJsonCase_ == 5) {
           polygonBuilder_.mergeFrom(value);
+        } else {
+          polygonBuilder_.setMessage(value);
         }
-        polygonBuilder_.setMessage(value);
       }
       geoJsonCase_ = 5;
       return this;
@@ -1792,7 +1717,7 @@ private static final long serialVersionUID = 0L;
         geoJson_ = null;
       }
       geoJsonCase_ = 5;
-      onChanged();;
+      onChanged();
       return polygonBuilder_;
     }
 
@@ -1870,8 +1795,9 @@ private static final long serialVersionUID = 0L;
       } else {
         if (geoJsonCase_ == 6) {
           multiPolygonBuilder_.mergeFrom(value);
+        } else {
+          multiPolygonBuilder_.setMessage(value);
         }
-        multiPolygonBuilder_.setMessage(value);
       }
       geoJsonCase_ = 6;
       return this;
@@ -1933,7 +1859,7 @@ private static final long serialVersionUID = 0L;
         geoJson_ = null;
       }
       geoJsonCase_ = 6;
-      onChanged();;
+      onChanged();
       return multiPolygonBuilder_;
     }
 
@@ -2011,8 +1937,9 @@ private static final long serialVersionUID = 0L;
       } else {
         if (geoJsonCase_ == 7) {
           geometryCollectionBuilder_.mergeFrom(value);
+        } else {
+          geometryCollectionBuilder_.setMessage(value);
         }
-        geometryCollectionBuilder_.setMessage(value);
       }
       geoJsonCase_ = 7;
       return this;
@@ -2074,7 +2001,7 @@ private static final long serialVersionUID = 0L;
         geoJson_ = null;
       }
       geoJsonCase_ = 7;
-      onChanged();;
+      onChanged();
       return geometryCollectionBuilder_;
     }
 
@@ -2152,8 +2079,9 @@ private static final long serialVersionUID = 0L;
       } else {
         if (geoJsonCase_ == 10) {
           featureBuilder_.mergeFrom(value);
+        } else {
+          featureBuilder_.setMessage(value);
         }
-        featureBuilder_.setMessage(value);
       }
       geoJsonCase_ = 10;
       return this;
@@ -2215,7 +2143,7 @@ private static final long serialVersionUID = 0L;
         geoJson_ = null;
       }
       geoJsonCase_ = 10;
-      onChanged();;
+      onChanged();
       return featureBuilder_;
     }
 
@@ -2293,8 +2221,9 @@ private static final long serialVersionUID = 0L;
       } else {
         if (geoJsonCase_ == 11) {
           featureCollectionBuilder_.mergeFrom(value);
+        } else {
+          featureCollectionBuilder_.setMessage(value);
         }
-        featureCollectionBuilder_.setMessage(value);
       }
       geoJsonCase_ = 11;
       return this;
@@ -2356,7 +2285,7 @@ private static final long serialVersionUID = 0L;
         geoJson_ = null;
       }
       geoJsonCase_ = 11;
-      onChanged();;
+      onChanged();
       return featureCollectionBuilder_;
     }
     @java.lang.Override
@@ -2392,7 +2321,18 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new GeoJson(input, extensionRegistry);
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
     }
   };
 

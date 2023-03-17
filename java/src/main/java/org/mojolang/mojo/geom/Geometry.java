@@ -30,141 +30,6 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private Geometry(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 10: {
-            org.mojolang.mojo.geom.Point.Builder subBuilder = null;
-            if (geometryCase_ == 1) {
-              subBuilder = ((org.mojolang.mojo.geom.Point) geometry_).toBuilder();
-            }
-            geometry_ =
-                input.readMessage(org.mojolang.mojo.geom.Point.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((org.mojolang.mojo.geom.Point) geometry_);
-              geometry_ = subBuilder.buildPartial();
-            }
-            geometryCase_ = 1;
-            break;
-          }
-          case 18: {
-            org.mojolang.mojo.geom.MultiPoint.Builder subBuilder = null;
-            if (geometryCase_ == 2) {
-              subBuilder = ((org.mojolang.mojo.geom.MultiPoint) geometry_).toBuilder();
-            }
-            geometry_ =
-                input.readMessage(org.mojolang.mojo.geom.MultiPoint.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((org.mojolang.mojo.geom.MultiPoint) geometry_);
-              geometry_ = subBuilder.buildPartial();
-            }
-            geometryCase_ = 2;
-            break;
-          }
-          case 26: {
-            org.mojolang.mojo.geom.LineString.Builder subBuilder = null;
-            if (geometryCase_ == 3) {
-              subBuilder = ((org.mojolang.mojo.geom.LineString) geometry_).toBuilder();
-            }
-            geometry_ =
-                input.readMessage(org.mojolang.mojo.geom.LineString.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((org.mojolang.mojo.geom.LineString) geometry_);
-              geometry_ = subBuilder.buildPartial();
-            }
-            geometryCase_ = 3;
-            break;
-          }
-          case 34: {
-            org.mojolang.mojo.geom.MultiLineString.Builder subBuilder = null;
-            if (geometryCase_ == 4) {
-              subBuilder = ((org.mojolang.mojo.geom.MultiLineString) geometry_).toBuilder();
-            }
-            geometry_ =
-                input.readMessage(org.mojolang.mojo.geom.MultiLineString.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((org.mojolang.mojo.geom.MultiLineString) geometry_);
-              geometry_ = subBuilder.buildPartial();
-            }
-            geometryCase_ = 4;
-            break;
-          }
-          case 42: {
-            org.mojolang.mojo.geom.Polygon.Builder subBuilder = null;
-            if (geometryCase_ == 5) {
-              subBuilder = ((org.mojolang.mojo.geom.Polygon) geometry_).toBuilder();
-            }
-            geometry_ =
-                input.readMessage(org.mojolang.mojo.geom.Polygon.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((org.mojolang.mojo.geom.Polygon) geometry_);
-              geometry_ = subBuilder.buildPartial();
-            }
-            geometryCase_ = 5;
-            break;
-          }
-          case 50: {
-            org.mojolang.mojo.geom.MultiPolygon.Builder subBuilder = null;
-            if (geometryCase_ == 6) {
-              subBuilder = ((org.mojolang.mojo.geom.MultiPolygon) geometry_).toBuilder();
-            }
-            geometry_ =
-                input.readMessage(org.mojolang.mojo.geom.MultiPolygon.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((org.mojolang.mojo.geom.MultiPolygon) geometry_);
-              geometry_ = subBuilder.buildPartial();
-            }
-            geometryCase_ = 6;
-            break;
-          }
-          case 58: {
-            org.mojolang.mojo.geom.GeometryCollection.Builder subBuilder = null;
-            if (geometryCase_ == 7) {
-              subBuilder = ((org.mojolang.mojo.geom.GeometryCollection) geometry_).toBuilder();
-            }
-            geometry_ =
-                input.readMessage(org.mojolang.mojo.geom.GeometryCollection.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom((org.mojolang.mojo.geom.GeometryCollection) geometry_);
-              geometry_ = subBuilder.buildPartial();
-            }
-            geometryCase_ = 7;
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return org.mojolang.mojo.geom.GeomProto.internal_static_mojo_geom_Geometry_descriptor;
@@ -481,7 +346,7 @@ private static final long serialVersionUID = 0L;
     if (geometryCase_ == 7) {
       output.writeMessage(7, (org.mojolang.mojo.geom.GeometryCollection) geometry_);
     }
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -518,7 +383,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(7, (org.mojolang.mojo.geom.GeometryCollection) geometry_);
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -566,7 +431,7 @@ private static final long serialVersionUID = 0L;
       case 0:
       default:
     }
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -609,7 +474,7 @@ private static final long serialVersionUID = 0L;
       case 0:
       default:
     }
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
@@ -726,22 +591,39 @@ private static final long serialVersionUID = 0L;
 
     // Construct using org.mojolang.mojo.geom.Geometry.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      bitField0_ = 0;
+      if (pointBuilder_ != null) {
+        pointBuilder_.clear();
+      }
+      if (multiPointBuilder_ != null) {
+        multiPointBuilder_.clear();
+      }
+      if (lineStringBuilder_ != null) {
+        lineStringBuilder_.clear();
+      }
+      if (multiLineStringBuilder_ != null) {
+        multiLineStringBuilder_.clear();
+      }
+      if (polygonBuilder_ != null) {
+        polygonBuilder_.clear();
+      }
+      if (multiPolygonBuilder_ != null) {
+        multiPolygonBuilder_.clear();
+      }
+      if (geometryCollectionBuilder_ != null) {
+        geometryCollectionBuilder_.clear();
+      }
       geometryCase_ = 0;
       geometry_ = null;
       return this;
@@ -770,58 +652,47 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public org.mojolang.mojo.geom.Geometry buildPartial() {
       org.mojolang.mojo.geom.Geometry result = new org.mojolang.mojo.geom.Geometry(this);
-      if (geometryCase_ == 1) {
-        if (pointBuilder_ == null) {
-          result.geometry_ = geometry_;
-        } else {
-          result.geometry_ = pointBuilder_.build();
-        }
-      }
-      if (geometryCase_ == 2) {
-        if (multiPointBuilder_ == null) {
-          result.geometry_ = geometry_;
-        } else {
-          result.geometry_ = multiPointBuilder_.build();
-        }
-      }
-      if (geometryCase_ == 3) {
-        if (lineStringBuilder_ == null) {
-          result.geometry_ = geometry_;
-        } else {
-          result.geometry_ = lineStringBuilder_.build();
-        }
-      }
-      if (geometryCase_ == 4) {
-        if (multiLineStringBuilder_ == null) {
-          result.geometry_ = geometry_;
-        } else {
-          result.geometry_ = multiLineStringBuilder_.build();
-        }
-      }
-      if (geometryCase_ == 5) {
-        if (polygonBuilder_ == null) {
-          result.geometry_ = geometry_;
-        } else {
-          result.geometry_ = polygonBuilder_.build();
-        }
-      }
-      if (geometryCase_ == 6) {
-        if (multiPolygonBuilder_ == null) {
-          result.geometry_ = geometry_;
-        } else {
-          result.geometry_ = multiPolygonBuilder_.build();
-        }
-      }
-      if (geometryCase_ == 7) {
-        if (geometryCollectionBuilder_ == null) {
-          result.geometry_ = geometry_;
-        } else {
-          result.geometry_ = geometryCollectionBuilder_.build();
-        }
-      }
-      result.geometryCase_ = geometryCase_;
+      if (bitField0_ != 0) { buildPartial0(result); }
+      buildPartialOneofs(result);
       onBuilt();
       return result;
+    }
+
+    private void buildPartial0(org.mojolang.mojo.geom.Geometry result) {
+      int from_bitField0_ = bitField0_;
+    }
+
+    private void buildPartialOneofs(org.mojolang.mojo.geom.Geometry result) {
+      result.geometryCase_ = geometryCase_;
+      result.geometry_ = this.geometry_;
+      if (geometryCase_ == 1 &&
+          pointBuilder_ != null) {
+        result.geometry_ = pointBuilder_.build();
+      }
+      if (geometryCase_ == 2 &&
+          multiPointBuilder_ != null) {
+        result.geometry_ = multiPointBuilder_.build();
+      }
+      if (geometryCase_ == 3 &&
+          lineStringBuilder_ != null) {
+        result.geometry_ = lineStringBuilder_.build();
+      }
+      if (geometryCase_ == 4 &&
+          multiLineStringBuilder_ != null) {
+        result.geometry_ = multiLineStringBuilder_.build();
+      }
+      if (geometryCase_ == 5 &&
+          polygonBuilder_ != null) {
+        result.geometry_ = polygonBuilder_.build();
+      }
+      if (geometryCase_ == 6 &&
+          multiPolygonBuilder_ != null) {
+        result.geometry_ = multiPolygonBuilder_.build();
+      }
+      if (geometryCase_ == 7 &&
+          geometryCollectionBuilder_ != null) {
+        result.geometry_ = geometryCollectionBuilder_.build();
+      }
     }
 
     @java.lang.Override
@@ -901,7 +772,7 @@ private static final long serialVersionUID = 0L;
           break;
         }
       }
-      this.mergeUnknownFields(other.unknownFields);
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -916,17 +787,79 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      org.mojolang.mojo.geom.Geometry parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              input.readMessage(
+                  getPointFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              geometryCase_ = 1;
+              break;
+            } // case 10
+            case 18: {
+              input.readMessage(
+                  getMultiPointFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              geometryCase_ = 2;
+              break;
+            } // case 18
+            case 26: {
+              input.readMessage(
+                  getLineStringFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              geometryCase_ = 3;
+              break;
+            } // case 26
+            case 34: {
+              input.readMessage(
+                  getMultiLineStringFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              geometryCase_ = 4;
+              break;
+            } // case 34
+            case 42: {
+              input.readMessage(
+                  getPolygonFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              geometryCase_ = 5;
+              break;
+            } // case 42
+            case 50: {
+              input.readMessage(
+                  getMultiPolygonFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              geometryCase_ = 6;
+              break;
+            } // case 50
+            case 58: {
+              input.readMessage(
+                  getGeometryCollectionFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              geometryCase_ = 7;
+              break;
+            } // case 58
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (org.mojolang.mojo.geom.Geometry) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
     private int geometryCase_ = 0;
@@ -944,6 +877,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
+    private int bitField0_;
 
     private com.google.protobuf.SingleFieldBuilderV3<
         org.mojolang.mojo.geom.Point, org.mojolang.mojo.geom.Point.Builder, org.mojolang.mojo.geom.PointOrBuilder> pointBuilder_;
@@ -1019,8 +953,9 @@ private static final long serialVersionUID = 0L;
       } else {
         if (geometryCase_ == 1) {
           pointBuilder_.mergeFrom(value);
+        } else {
+          pointBuilder_.setMessage(value);
         }
-        pointBuilder_.setMessage(value);
       }
       geometryCase_ = 1;
       return this;
@@ -1082,7 +1017,7 @@ private static final long serialVersionUID = 0L;
         geometry_ = null;
       }
       geometryCase_ = 1;
-      onChanged();;
+      onChanged();
       return pointBuilder_;
     }
 
@@ -1160,8 +1095,9 @@ private static final long serialVersionUID = 0L;
       } else {
         if (geometryCase_ == 2) {
           multiPointBuilder_.mergeFrom(value);
+        } else {
+          multiPointBuilder_.setMessage(value);
         }
-        multiPointBuilder_.setMessage(value);
       }
       geometryCase_ = 2;
       return this;
@@ -1223,7 +1159,7 @@ private static final long serialVersionUID = 0L;
         geometry_ = null;
       }
       geometryCase_ = 2;
-      onChanged();;
+      onChanged();
       return multiPointBuilder_;
     }
 
@@ -1301,8 +1237,9 @@ private static final long serialVersionUID = 0L;
       } else {
         if (geometryCase_ == 3) {
           lineStringBuilder_.mergeFrom(value);
+        } else {
+          lineStringBuilder_.setMessage(value);
         }
-        lineStringBuilder_.setMessage(value);
       }
       geometryCase_ = 3;
       return this;
@@ -1364,7 +1301,7 @@ private static final long serialVersionUID = 0L;
         geometry_ = null;
       }
       geometryCase_ = 3;
-      onChanged();;
+      onChanged();
       return lineStringBuilder_;
     }
 
@@ -1442,8 +1379,9 @@ private static final long serialVersionUID = 0L;
       } else {
         if (geometryCase_ == 4) {
           multiLineStringBuilder_.mergeFrom(value);
+        } else {
+          multiLineStringBuilder_.setMessage(value);
         }
-        multiLineStringBuilder_.setMessage(value);
       }
       geometryCase_ = 4;
       return this;
@@ -1505,7 +1443,7 @@ private static final long serialVersionUID = 0L;
         geometry_ = null;
       }
       geometryCase_ = 4;
-      onChanged();;
+      onChanged();
       return multiLineStringBuilder_;
     }
 
@@ -1583,8 +1521,9 @@ private static final long serialVersionUID = 0L;
       } else {
         if (geometryCase_ == 5) {
           polygonBuilder_.mergeFrom(value);
+        } else {
+          polygonBuilder_.setMessage(value);
         }
-        polygonBuilder_.setMessage(value);
       }
       geometryCase_ = 5;
       return this;
@@ -1646,7 +1585,7 @@ private static final long serialVersionUID = 0L;
         geometry_ = null;
       }
       geometryCase_ = 5;
-      onChanged();;
+      onChanged();
       return polygonBuilder_;
     }
 
@@ -1724,8 +1663,9 @@ private static final long serialVersionUID = 0L;
       } else {
         if (geometryCase_ == 6) {
           multiPolygonBuilder_.mergeFrom(value);
+        } else {
+          multiPolygonBuilder_.setMessage(value);
         }
-        multiPolygonBuilder_.setMessage(value);
       }
       geometryCase_ = 6;
       return this;
@@ -1787,7 +1727,7 @@ private static final long serialVersionUID = 0L;
         geometry_ = null;
       }
       geometryCase_ = 6;
-      onChanged();;
+      onChanged();
       return multiPolygonBuilder_;
     }
 
@@ -1865,8 +1805,9 @@ private static final long serialVersionUID = 0L;
       } else {
         if (geometryCase_ == 7) {
           geometryCollectionBuilder_.mergeFrom(value);
+        } else {
+          geometryCollectionBuilder_.setMessage(value);
         }
-        geometryCollectionBuilder_.setMessage(value);
       }
       geometryCase_ = 7;
       return this;
@@ -1928,7 +1869,7 @@ private static final long serialVersionUID = 0L;
         geometry_ = null;
       }
       geometryCase_ = 7;
-      onChanged();;
+      onChanged();
       return geometryCollectionBuilder_;
     }
     @java.lang.Override
@@ -1964,7 +1905,18 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new Geometry(input, extensionRegistry);
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
     }
   };
 

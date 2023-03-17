@@ -31,67 +31,6 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private Circle(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 10: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            type_ = s;
-            break;
-          }
-          case 18: {
-            org.mojolang.mojo.geom.LngLat.Builder subBuilder = null;
-            if (center_ != null) {
-              subBuilder = center_.toBuilder();
-            }
-            center_ = input.readMessage(org.mojolang.mojo.geom.LngLat.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(center_);
-              center_ = subBuilder.buildPartial();
-            }
-
-            break;
-          }
-          case 45: {
-
-            radius_ = input.readFloat();
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return org.mojolang.mojo.geom.CircleProto.internal_static_mojo_geom_Circle_descriptor;
@@ -106,7 +45,8 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int TYPE_FIELD_NUMBER = 1;
-  private volatile java.lang.Object type_;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object type_ = "";
   /**
    * <code>string type = 1;</code>
    * @return The type.
@@ -166,11 +106,11 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public org.mojolang.mojo.geom.LngLatOrBuilder getCenterOrBuilder() {
-    return getCenter();
+    return center_ == null ? org.mojolang.mojo.geom.LngLat.getDefaultInstance() : center_;
   }
 
   public static final int RADIUS_FIELD_NUMBER = 5;
-  private float radius_;
+  private float radius_ = 0F;
   /**
    * <code>float radius = 5;</code>
    * @return The radius.
@@ -203,7 +143,7 @@ private static final long serialVersionUID = 0L;
     if (java.lang.Float.floatToRawIntBits(radius_) != 0) {
       output.writeFloat(5, radius_);
     }
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -223,7 +163,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeFloatSize(5, radius_);
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -248,7 +188,7 @@ private static final long serialVersionUID = 0L;
     if (java.lang.Float.floatToIntBits(getRadius())
         != java.lang.Float.floatToIntBits(
             other.getRadius())) return false;
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -268,7 +208,7 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + RADIUS_FIELD_NUMBER;
     hash = (53 * hash) + java.lang.Float.floatToIntBits(
         getRadius());
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
@@ -385,32 +325,25 @@ private static final long serialVersionUID = 0L;
 
     // Construct using org.mojolang.mojo.geom.Circle.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      bitField0_ = 0;
       type_ = "";
-
-      if (centerBuilder_ == null) {
-        center_ = null;
-      } else {
-        center_ = null;
+      center_ = null;
+      if (centerBuilder_ != null) {
+        centerBuilder_.dispose();
         centerBuilder_ = null;
       }
       radius_ = 0F;
-
       return this;
     }
 
@@ -437,15 +370,24 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public org.mojolang.mojo.geom.Circle buildPartial() {
       org.mojolang.mojo.geom.Circle result = new org.mojolang.mojo.geom.Circle(this);
-      result.type_ = type_;
-      if (centerBuilder_ == null) {
-        result.center_ = center_;
-      } else {
-        result.center_ = centerBuilder_.build();
-      }
-      result.radius_ = radius_;
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
+    }
+
+    private void buildPartial0(org.mojolang.mojo.geom.Circle result) {
+      int from_bitField0_ = bitField0_;
+      if (((from_bitField0_ & 0x00000001) != 0)) {
+        result.type_ = type_;
+      }
+      if (((from_bitField0_ & 0x00000002) != 0)) {
+        result.center_ = centerBuilder_ == null
+            ? center_
+            : centerBuilder_.build();
+      }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.radius_ = radius_;
+      }
     }
 
     @java.lang.Override
@@ -494,6 +436,7 @@ private static final long serialVersionUID = 0L;
       if (other == org.mojolang.mojo.geom.Circle.getDefaultInstance()) return this;
       if (!other.getType().isEmpty()) {
         type_ = other.type_;
+        bitField0_ |= 0x00000001;
         onChanged();
       }
       if (other.hasCenter()) {
@@ -502,7 +445,7 @@ private static final long serialVersionUID = 0L;
       if (other.getRadius() != 0F) {
         setRadius(other.getRadius());
       }
-      this.mergeUnknownFields(other.unknownFields);
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -517,19 +460,50 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      org.mojolang.mojo.geom.Circle parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              type_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 10
+            case 18: {
+              input.readMessage(
+                  getCenterFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 18
+            case 45: {
+              radius_ = input.readFloat();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 45
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (org.mojolang.mojo.geom.Circle) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
+    private int bitField0_;
 
     private java.lang.Object type_ = "";
     /**
@@ -572,11 +546,9 @@ private static final long serialVersionUID = 0L;
      */
     public Builder setType(
         java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      if (value == null) { throw new NullPointerException(); }
       type_ = value;
+      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -585,8 +557,8 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearType() {
-      
       type_ = getDefaultInstance().getType();
+      bitField0_ = (bitField0_ & ~0x00000001);
       onChanged();
       return this;
     }
@@ -597,12 +569,10 @@ private static final long serialVersionUID = 0L;
      */
     public Builder setTypeBytes(
         com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
       type_ = value;
+      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -615,7 +585,7 @@ private static final long serialVersionUID = 0L;
      * @return Whether the center field is set.
      */
     public boolean hasCenter() {
-      return centerBuilder_ != null || center_ != null;
+      return ((bitField0_ & 0x00000002) != 0);
     }
     /**
      * <code>.mojo.geom.LngLat center = 2 [(.mojo.alias) = "coordinates"];</code>
@@ -637,11 +607,11 @@ private static final long serialVersionUID = 0L;
           throw new NullPointerException();
         }
         center_ = value;
-        onChanged();
       } else {
         centerBuilder_.setMessage(value);
       }
-
+      bitField0_ |= 0x00000002;
+      onChanged();
       return this;
     }
     /**
@@ -651,11 +621,11 @@ private static final long serialVersionUID = 0L;
         org.mojolang.mojo.geom.LngLat.Builder builderForValue) {
       if (centerBuilder_ == null) {
         center_ = builderForValue.build();
-        onChanged();
       } else {
         centerBuilder_.setMessage(builderForValue.build());
       }
-
+      bitField0_ |= 0x00000002;
+      onChanged();
       return this;
     }
     /**
@@ -663,38 +633,38 @@ private static final long serialVersionUID = 0L;
      */
     public Builder mergeCenter(org.mojolang.mojo.geom.LngLat value) {
       if (centerBuilder_ == null) {
-        if (center_ != null) {
-          center_ =
-            org.mojolang.mojo.geom.LngLat.newBuilder(center_).mergeFrom(value).buildPartial();
+        if (((bitField0_ & 0x00000002) != 0) &&
+          center_ != null &&
+          center_ != org.mojolang.mojo.geom.LngLat.getDefaultInstance()) {
+          getCenterBuilder().mergeFrom(value);
         } else {
           center_ = value;
         }
-        onChanged();
       } else {
         centerBuilder_.mergeFrom(value);
       }
-
+      bitField0_ |= 0x00000002;
+      onChanged();
       return this;
     }
     /**
      * <code>.mojo.geom.LngLat center = 2 [(.mojo.alias) = "coordinates"];</code>
      */
     public Builder clearCenter() {
-      if (centerBuilder_ == null) {
-        center_ = null;
-        onChanged();
-      } else {
-        center_ = null;
+      bitField0_ = (bitField0_ & ~0x00000002);
+      center_ = null;
+      if (centerBuilder_ != null) {
+        centerBuilder_.dispose();
         centerBuilder_ = null;
       }
-
+      onChanged();
       return this;
     }
     /**
      * <code>.mojo.geom.LngLat center = 2 [(.mojo.alias) = "coordinates"];</code>
      */
     public org.mojolang.mojo.geom.LngLat.Builder getCenterBuilder() {
-      
+      bitField0_ |= 0x00000002;
       onChanged();
       return getCenterFieldBuilder().getBuilder();
     }
@@ -743,6 +713,7 @@ private static final long serialVersionUID = 0L;
     public Builder setRadius(float value) {
       
       radius_ = value;
+      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
@@ -751,7 +722,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearRadius() {
-      
+      bitField0_ = (bitField0_ & ~0x00000004);
       radius_ = 0F;
       onChanged();
       return this;
@@ -789,7 +760,18 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new Circle(input, extensionRegistry);
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
     }
   };
 

@@ -18,10 +18,15 @@
 package geom
 
 import (
+	"fmt"
 	"strconv"
+	"strings"
+
+	"github.com/mojo-lang/core/go/pkg/mojo/core"
 )
 
 var SpatialReferenceNames = map[int32]string{
+	0: "unspecified",
 	1: "wgs84",
 	2: "gcj02",
 	3: "bd09",
@@ -30,22 +35,26 @@ var SpatialReferenceNames = map[int32]string{
 }
 
 var SpatialReferenceValues = map[string]SpatialReference{
-	"wgs84":    SpatialReference_SPATIAL_REFERENCE_WGS84,
-	"gcj02":    SpatialReference_SPATIAL_REFERENCE_GCJ02,
-	"bd09":     SpatialReference_SPATIAL_REFERENCE_BD09,
-	"cgcs2000": SpatialReference_SPATIAL_REFERENCE_CGCS2000,
-	"sh2000":   SpatialReference_SPATIAL_REFERENCE_SH2000,
+	"unspecified": SpatialReference_SPATIAL_REFERENCE_UNSPECIFIED,
+	"wgs84":       SpatialReference_SPATIAL_REFERENCE_WGS84,
+	"gcj02":       SpatialReference_SPATIAL_REFERENCE_GCJ02,
+	"bd09":        SpatialReference_SPATIAL_REFERENCE_BD09,
+	"cgcs2000":    SpatialReference_SPATIAL_REFERENCE_CGCS2000,
+	"sh2000":      SpatialReference_SPATIAL_REFERENCE_SH2000,
 }
 
 func (x SpatialReference) Format() string {
-	s, ok := SpatialReferenceNames[int32(x)]
-	if ok {
+	v := int32(x)
+	if s, ok := SpatialReferenceNames[v]; ok {
+		if v == 0 && "unspecified" == strings.ToLower(s) {
+			return ""
+		}
 		return s
 	}
-	if int(x) == 0 {
-		return "unspecified"
+	if v == 0 {
+		return ""
 	}
-	return strconv.Itoa(int(x))
+	return strconv.Itoa(int(v))
 }
 
 func (x SpatialReference) ToString() string {
@@ -53,15 +62,25 @@ func (x SpatialReference) ToString() string {
 }
 
 func (x *SpatialReference) Parse(value string) error {
-	if x != nil {
-		s, ok := SpatialReferenceValues[value]
-		if ok {
+	if x != nil && len(value) > 0 {
+		if s, ok := SpatialReferenceValues[value]; ok {
 			*x = s
 		} else {
-			*x = SpatialReference_SPATIAL_REFERENCE_WGS84
+			v := core.CaseStyler("snake")(value)
+			if s, ok = SpatialReferenceValues[v]; ok {
+				*x = s
+			} else {
+				return fmt.Errorf("invalid SpatialReference: %s", value)
+			}
 		}
-	} else {
-		*x = SpatialReference_SPATIAL_REFERENCE_WGS84
 	}
 	return nil
+}
+
+func ParseSpatialReference(value string) (SpatialReference, error) {
+	var v SpatialReference
+	if err := (&v).Parse(value); err != nil {
+		return v, err
+	}
+	return v, nil
 }

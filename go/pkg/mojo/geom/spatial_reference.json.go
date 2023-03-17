@@ -18,6 +18,7 @@
 package geom
 
 import (
+	"fmt"
 	"unsafe"
 
 	jsoniter "github.com/json-iterator/go"
@@ -36,11 +37,15 @@ func (codec *SpatialReferenceCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.It
 	any := iter.ReadAny()
 	e := (*SpatialReference)(ptr)
 	if any.ValueType() == jsoniter.StringValue {
-		e.Parse(any.ToString())
+		if err := e.Parse(any.ToString()); err != nil {
+			iter.ReportError("SpatialReferenceCodec.Decode", err.Error())
+		}
 	} else if any.ValueType() == jsoniter.NumberValue {
 		value := any.ToInt32()
 		if _, ok := SpatialReferenceNames[value]; ok {
 			*e = SpatialReference(value)
+		} else {
+			iter.ReportError("SpatialReferenceCodec.Decode", fmt.Sprintf("invalid enum value %d for SpatialReference", value))
 		}
 	}
 }

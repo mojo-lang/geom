@@ -30,69 +30,6 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private BoundingBox(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 10: {
-            org.mojolang.mojo.geom.LngLat.Builder subBuilder = null;
-            if (leftBottom_ != null) {
-              subBuilder = leftBottom_.toBuilder();
-            }
-            leftBottom_ = input.readMessage(org.mojolang.mojo.geom.LngLat.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(leftBottom_);
-              leftBottom_ = subBuilder.buildPartial();
-            }
-
-            break;
-          }
-          case 18: {
-            org.mojolang.mojo.geom.LngLat.Builder subBuilder = null;
-            if (rightTop_ != null) {
-              subBuilder = rightTop_.toBuilder();
-            }
-            rightTop_ = input.readMessage(org.mojolang.mojo.geom.LngLat.parser(), extensionRegistry);
-            if (subBuilder != null) {
-              subBuilder.mergeFrom(rightTop_);
-              rightTop_ = subBuilder.buildPartial();
-            }
-
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return org.mojolang.mojo.geom.BoundingBoxProto.internal_static_mojo_geom_BoundingBox_descriptor;
@@ -129,7 +66,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public org.mojolang.mojo.geom.LngLatOrBuilder getLeftBottomOrBuilder() {
-    return getLeftBottom();
+    return leftBottom_ == null ? org.mojolang.mojo.geom.LngLat.getDefaultInstance() : leftBottom_;
   }
 
   public static final int RIGHT_TOP_FIELD_NUMBER = 2;
@@ -155,7 +92,7 @@ private static final long serialVersionUID = 0L;
    */
   @java.lang.Override
   public org.mojolang.mojo.geom.LngLatOrBuilder getRightTopOrBuilder() {
-    return getRightTop();
+    return rightTop_ == null ? org.mojolang.mojo.geom.LngLat.getDefaultInstance() : rightTop_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -178,7 +115,7 @@ private static final long serialVersionUID = 0L;
     if (rightTop_ != null) {
       output.writeMessage(2, getRightTop());
     }
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -195,7 +132,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(2, getRightTop());
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -220,7 +157,7 @@ private static final long serialVersionUID = 0L;
       if (!getRightTop()
           .equals(other.getRightTop())) return false;
     }
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -239,7 +176,7 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + RIGHT_TOP_FIELD_NUMBER;
       hash = (53 * hash) + getRightTop().hashCode();
     }
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
@@ -356,32 +293,26 @@ private static final long serialVersionUID = 0L;
 
     // Construct using org.mojolang.mojo.geom.BoundingBox.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      if (leftBottomBuilder_ == null) {
-        leftBottom_ = null;
-      } else {
-        leftBottom_ = null;
+      bitField0_ = 0;
+      leftBottom_ = null;
+      if (leftBottomBuilder_ != null) {
+        leftBottomBuilder_.dispose();
         leftBottomBuilder_ = null;
       }
-      if (rightTopBuilder_ == null) {
-        rightTop_ = null;
-      } else {
-        rightTop_ = null;
+      rightTop_ = null;
+      if (rightTopBuilder_ != null) {
+        rightTopBuilder_.dispose();
         rightTopBuilder_ = null;
       }
       return this;
@@ -410,18 +341,23 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public org.mojolang.mojo.geom.BoundingBox buildPartial() {
       org.mojolang.mojo.geom.BoundingBox result = new org.mojolang.mojo.geom.BoundingBox(this);
-      if (leftBottomBuilder_ == null) {
-        result.leftBottom_ = leftBottom_;
-      } else {
-        result.leftBottom_ = leftBottomBuilder_.build();
-      }
-      if (rightTopBuilder_ == null) {
-        result.rightTop_ = rightTop_;
-      } else {
-        result.rightTop_ = rightTopBuilder_.build();
-      }
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
+    }
+
+    private void buildPartial0(org.mojolang.mojo.geom.BoundingBox result) {
+      int from_bitField0_ = bitField0_;
+      if (((from_bitField0_ & 0x00000001) != 0)) {
+        result.leftBottom_ = leftBottomBuilder_ == null
+            ? leftBottom_
+            : leftBottomBuilder_.build();
+      }
+      if (((from_bitField0_ & 0x00000002) != 0)) {
+        result.rightTop_ = rightTopBuilder_ == null
+            ? rightTop_
+            : rightTopBuilder_.build();
+      }
     }
 
     @java.lang.Override
@@ -474,7 +410,7 @@ private static final long serialVersionUID = 0L;
       if (other.hasRightTop()) {
         mergeRightTop(other.getRightTop());
       }
-      this.mergeUnknownFields(other.unknownFields);
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -489,19 +425,47 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      org.mojolang.mojo.geom.BoundingBox parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              input.readMessage(
+                  getLeftBottomFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 10
+            case 18: {
+              input.readMessage(
+                  getRightTopFieldBuilder().getBuilder(),
+                  extensionRegistry);
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 18
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (org.mojolang.mojo.geom.BoundingBox) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
+    private int bitField0_;
 
     private org.mojolang.mojo.geom.LngLat leftBottom_;
     private com.google.protobuf.SingleFieldBuilderV3<
@@ -511,7 +475,7 @@ private static final long serialVersionUID = 0L;
      * @return Whether the leftBottom field is set.
      */
     public boolean hasLeftBottom() {
-      return leftBottomBuilder_ != null || leftBottom_ != null;
+      return ((bitField0_ & 0x00000001) != 0);
     }
     /**
      * <code>.mojo.geom.LngLat left_bottom = 1;</code>
@@ -533,11 +497,11 @@ private static final long serialVersionUID = 0L;
           throw new NullPointerException();
         }
         leftBottom_ = value;
-        onChanged();
       } else {
         leftBottomBuilder_.setMessage(value);
       }
-
+      bitField0_ |= 0x00000001;
+      onChanged();
       return this;
     }
     /**
@@ -547,11 +511,11 @@ private static final long serialVersionUID = 0L;
         org.mojolang.mojo.geom.LngLat.Builder builderForValue) {
       if (leftBottomBuilder_ == null) {
         leftBottom_ = builderForValue.build();
-        onChanged();
       } else {
         leftBottomBuilder_.setMessage(builderForValue.build());
       }
-
+      bitField0_ |= 0x00000001;
+      onChanged();
       return this;
     }
     /**
@@ -559,38 +523,38 @@ private static final long serialVersionUID = 0L;
      */
     public Builder mergeLeftBottom(org.mojolang.mojo.geom.LngLat value) {
       if (leftBottomBuilder_ == null) {
-        if (leftBottom_ != null) {
-          leftBottom_ =
-            org.mojolang.mojo.geom.LngLat.newBuilder(leftBottom_).mergeFrom(value).buildPartial();
+        if (((bitField0_ & 0x00000001) != 0) &&
+          leftBottom_ != null &&
+          leftBottom_ != org.mojolang.mojo.geom.LngLat.getDefaultInstance()) {
+          getLeftBottomBuilder().mergeFrom(value);
         } else {
           leftBottom_ = value;
         }
-        onChanged();
       } else {
         leftBottomBuilder_.mergeFrom(value);
       }
-
+      bitField0_ |= 0x00000001;
+      onChanged();
       return this;
     }
     /**
      * <code>.mojo.geom.LngLat left_bottom = 1;</code>
      */
     public Builder clearLeftBottom() {
-      if (leftBottomBuilder_ == null) {
-        leftBottom_ = null;
-        onChanged();
-      } else {
-        leftBottom_ = null;
+      bitField0_ = (bitField0_ & ~0x00000001);
+      leftBottom_ = null;
+      if (leftBottomBuilder_ != null) {
+        leftBottomBuilder_.dispose();
         leftBottomBuilder_ = null;
       }
-
+      onChanged();
       return this;
     }
     /**
      * <code>.mojo.geom.LngLat left_bottom = 1;</code>
      */
     public org.mojolang.mojo.geom.LngLat.Builder getLeftBottomBuilder() {
-      
+      bitField0_ |= 0x00000001;
       onChanged();
       return getLeftBottomFieldBuilder().getBuilder();
     }
@@ -630,7 +594,7 @@ private static final long serialVersionUID = 0L;
      * @return Whether the rightTop field is set.
      */
     public boolean hasRightTop() {
-      return rightTopBuilder_ != null || rightTop_ != null;
+      return ((bitField0_ & 0x00000002) != 0);
     }
     /**
      * <code>.mojo.geom.LngLat right_top = 2;</code>
@@ -652,11 +616,11 @@ private static final long serialVersionUID = 0L;
           throw new NullPointerException();
         }
         rightTop_ = value;
-        onChanged();
       } else {
         rightTopBuilder_.setMessage(value);
       }
-
+      bitField0_ |= 0x00000002;
+      onChanged();
       return this;
     }
     /**
@@ -666,11 +630,11 @@ private static final long serialVersionUID = 0L;
         org.mojolang.mojo.geom.LngLat.Builder builderForValue) {
       if (rightTopBuilder_ == null) {
         rightTop_ = builderForValue.build();
-        onChanged();
       } else {
         rightTopBuilder_.setMessage(builderForValue.build());
       }
-
+      bitField0_ |= 0x00000002;
+      onChanged();
       return this;
     }
     /**
@@ -678,38 +642,38 @@ private static final long serialVersionUID = 0L;
      */
     public Builder mergeRightTop(org.mojolang.mojo.geom.LngLat value) {
       if (rightTopBuilder_ == null) {
-        if (rightTop_ != null) {
-          rightTop_ =
-            org.mojolang.mojo.geom.LngLat.newBuilder(rightTop_).mergeFrom(value).buildPartial();
+        if (((bitField0_ & 0x00000002) != 0) &&
+          rightTop_ != null &&
+          rightTop_ != org.mojolang.mojo.geom.LngLat.getDefaultInstance()) {
+          getRightTopBuilder().mergeFrom(value);
         } else {
           rightTop_ = value;
         }
-        onChanged();
       } else {
         rightTopBuilder_.mergeFrom(value);
       }
-
+      bitField0_ |= 0x00000002;
+      onChanged();
       return this;
     }
     /**
      * <code>.mojo.geom.LngLat right_top = 2;</code>
      */
     public Builder clearRightTop() {
-      if (rightTopBuilder_ == null) {
-        rightTop_ = null;
-        onChanged();
-      } else {
-        rightTop_ = null;
+      bitField0_ = (bitField0_ & ~0x00000002);
+      rightTop_ = null;
+      if (rightTopBuilder_ != null) {
+        rightTopBuilder_.dispose();
         rightTopBuilder_ = null;
       }
-
+      onChanged();
       return this;
     }
     /**
      * <code>.mojo.geom.LngLat right_top = 2;</code>
      */
     public org.mojolang.mojo.geom.LngLat.Builder getRightTopBuilder() {
-      
+      bitField0_ |= 0x00000002;
       onChanged();
       return getRightTopFieldBuilder().getBuilder();
     }
@@ -773,7 +737,18 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new BoundingBox(input, extensionRegistry);
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
     }
   };
 

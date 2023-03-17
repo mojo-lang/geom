@@ -30,58 +30,6 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private LngLat(
-      com.google.protobuf.CodedInputStream input,
-      com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-      throws com.google.protobuf.InvalidProtocolBufferException {
-    this();
-    if (extensionRegistry == null) {
-      throw new java.lang.NullPointerException();
-    }
-    com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-        com.google.protobuf.UnknownFieldSet.newBuilder();
-    try {
-      boolean done = false;
-      while (!done) {
-        int tag = input.readTag();
-        switch (tag) {
-          case 0:
-            done = true;
-            break;
-          case 9: {
-
-            longitude_ = input.readDouble();
-            break;
-          }
-          case 17: {
-
-            latitude_ = input.readDouble();
-            break;
-          }
-          case 25: {
-
-            altitude_ = input.readDouble();
-            break;
-          }
-          default: {
-            if (!parseUnknownField(
-                input, unknownFields, extensionRegistry, tag)) {
-              done = true;
-            }
-            break;
-          }
-        }
-      }
-    } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-      throw e.setUnfinishedMessage(this);
-    } catch (java.io.IOException e) {
-      throw new com.google.protobuf.InvalidProtocolBufferException(
-          e).setUnfinishedMessage(this);
-    } finally {
-      this.unknownFields = unknownFields.build();
-      makeExtensionsImmutable();
-    }
-  }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
     return org.mojolang.mojo.geom.LngLatProto.internal_static_mojo_geom_LngLat_descriptor;
@@ -96,7 +44,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int LONGITUDE_FIELD_NUMBER = 1;
-  private double longitude_;
+  private double longitude_ = 0D;
   /**
    * <code>double longitude = 1;</code>
    * @return The longitude.
@@ -107,7 +55,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int LATITUDE_FIELD_NUMBER = 2;
-  private double latitude_;
+  private double latitude_ = 0D;
   /**
    * <code>double latitude = 2;</code>
    * @return The latitude.
@@ -118,7 +66,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int ALTITUDE_FIELD_NUMBER = 3;
-  private double altitude_;
+  private double altitude_ = 0D;
   /**
    * <code>double altitude = 3;</code>
    * @return The altitude.
@@ -151,7 +99,7 @@ private static final long serialVersionUID = 0L;
     if (java.lang.Double.doubleToRawLongBits(altitude_) != 0) {
       output.writeDouble(3, altitude_);
     }
-    unknownFields.writeTo(output);
+    getUnknownFields().writeTo(output);
   }
 
   @java.lang.Override
@@ -172,7 +120,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeDoubleSize(3, altitude_);
     }
-    size += unknownFields.getSerializedSize();
+    size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
   }
@@ -196,7 +144,7 @@ private static final long serialVersionUID = 0L;
     if (java.lang.Double.doubleToLongBits(getAltitude())
         != java.lang.Double.doubleToLongBits(
             other.getAltitude())) return false;
-    if (!unknownFields.equals(other.unknownFields)) return false;
+    if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
 
@@ -216,7 +164,7 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + ALTITUDE_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         java.lang.Double.doubleToLongBits(getAltitude()));
-    hash = (29 * hash) + unknownFields.hashCode();
+    hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
   }
@@ -333,28 +281,21 @@ private static final long serialVersionUID = 0L;
 
     // Construct using org.mojolang.mojo.geom.LngLat.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      bitField0_ = 0;
       longitude_ = 0D;
-
       latitude_ = 0D;
-
       altitude_ = 0D;
-
       return this;
     }
 
@@ -381,11 +322,22 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public org.mojolang.mojo.geom.LngLat buildPartial() {
       org.mojolang.mojo.geom.LngLat result = new org.mojolang.mojo.geom.LngLat(this);
-      result.longitude_ = longitude_;
-      result.latitude_ = latitude_;
-      result.altitude_ = altitude_;
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
+    }
+
+    private void buildPartial0(org.mojolang.mojo.geom.LngLat result) {
+      int from_bitField0_ = bitField0_;
+      if (((from_bitField0_ & 0x00000001) != 0)) {
+        result.longitude_ = longitude_;
+      }
+      if (((from_bitField0_ & 0x00000002) != 0)) {
+        result.latitude_ = latitude_;
+      }
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.altitude_ = altitude_;
+      }
     }
 
     @java.lang.Override
@@ -441,7 +393,7 @@ private static final long serialVersionUID = 0L;
       if (other.getAltitude() != 0D) {
         setAltitude(other.getAltitude());
       }
-      this.mergeUnknownFields(other.unknownFields);
+      this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
     }
@@ -456,19 +408,48 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      org.mojolang.mojo.geom.LngLat parsedMessage = null;
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
       try {
-        parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 9: {
+              longitude_ = input.readDouble();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 9
+            case 17: {
+              latitude_ = input.readDouble();
+              bitField0_ |= 0x00000002;
+              break;
+            } // case 17
+            case 25: {
+              altitude_ = input.readDouble();
+              bitField0_ |= 0x00000004;
+              break;
+            } // case 25
+            default: {
+              if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                done = true; // was an endgroup tag
+              }
+              break;
+            } // default:
+          } // switch (tag)
+        } // while (!done)
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (org.mojolang.mojo.geom.LngLat) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
-        if (parsedMessage != null) {
-          mergeFrom(parsedMessage);
-        }
-      }
+        onChanged();
+      } // finally
       return this;
     }
+    private int bitField0_;
 
     private double longitude_ ;
     /**
@@ -487,6 +468,7 @@ private static final long serialVersionUID = 0L;
     public Builder setLongitude(double value) {
       
       longitude_ = value;
+      bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
@@ -495,7 +477,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearLongitude() {
-      
+      bitField0_ = (bitField0_ & ~0x00000001);
       longitude_ = 0D;
       onChanged();
       return this;
@@ -518,6 +500,7 @@ private static final long serialVersionUID = 0L;
     public Builder setLatitude(double value) {
       
       latitude_ = value;
+      bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }
@@ -526,7 +509,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearLatitude() {
-      
+      bitField0_ = (bitField0_ & ~0x00000002);
       latitude_ = 0D;
       onChanged();
       return this;
@@ -549,6 +532,7 @@ private static final long serialVersionUID = 0L;
     public Builder setAltitude(double value) {
       
       altitude_ = value;
+      bitField0_ |= 0x00000004;
       onChanged();
       return this;
     }
@@ -557,7 +541,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder clearAltitude() {
-      
+      bitField0_ = (bitField0_ & ~0x00000004);
       altitude_ = 0D;
       onChanged();
       return this;
@@ -595,7 +579,18 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new LngLat(input, extensionRegistry);
+      Builder builder = newBuilder();
+      try {
+        builder.mergeFrom(input, extensionRegistry);
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(builder.buildPartial());
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(e)
+            .setUnfinishedMessage(builder.buildPartial());
+      }
+      return builder.buildPartial();
     }
   };
 
