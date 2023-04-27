@@ -6,7 +6,7 @@ require (
 	github.com/golang/geo v0.0.0-20230421003525-6adc56603217
 	github.com/json-iterator/go v1.1.12
 	github.com/mmcloughlin/geohash v0.10.0
-	github.com/mojo-lang/core/go v0.0.0-20230427070306-34ab6ed73f1c
+	github.com/mojo-lang/core/go v0.0.0-20230427095043-961105c650c8
 	github.com/stretchr/testify v1.8.0
 	google.golang.org/protobuf v1.30.0
 	gorm.io/gorm v1.25.0
