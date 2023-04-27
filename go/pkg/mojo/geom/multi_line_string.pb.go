@@ -41,7 +41,7 @@ func (x *MultiLineString) Reset() {
 	}
 }
 
-func (x *MultiLineString) String() string {
+func (x *MultiLineString) ToText() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 

@@ -47,7 +47,7 @@ func (x *Geometry) Reset() {
 	}
 }
 
-func (x *Geometry) String() string {
+func (x *Geometry) ToText() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
@@ -190,7 +190,7 @@ func (x *GeometryCollection) Reset() {
 	}
 }
 
-func (x *GeometryCollection) String() string {
+func (x *GeometryCollection) ToText() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 

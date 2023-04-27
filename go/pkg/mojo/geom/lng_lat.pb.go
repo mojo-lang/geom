@@ -41,7 +41,7 @@ func (x *LngLat) Reset() {
 	}
 }
 
-func (x *LngLat) String() string {
+func (x *LngLat) ToText() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 

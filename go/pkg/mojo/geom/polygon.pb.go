@@ -41,7 +41,7 @@ func (x *Polygon) Reset() {
 	}
 }
 
-func (x *Polygon) String() string {
+func (x *Polygon) ToText() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 

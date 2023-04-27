@@ -43,7 +43,7 @@ func (x *FeatureCollection) Reset() {
 	}
 }
 
-func (x *FeatureCollection) String() string {
+func (x *FeatureCollection) ToText() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 

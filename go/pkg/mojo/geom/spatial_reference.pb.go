@@ -59,7 +59,7 @@ func (x SpatialReference) Enum() *SpatialReference {
 	return p
 }
 
-func (x SpatialReference) String() string {
+func (x SpatialReference) ToText() string {
 	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
 }
 

@@ -42,7 +42,7 @@ func (x *Circle) Reset() {
 	}
 }
 
-func (x *Circle) String() string {
+func (x *Circle) ToText() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
