@@ -41,7 +41,7 @@ func (x *MultiPoint) Reset() {
 	}
 }
 
-func (x *MultiPoint) ToText() string {
+func (x *MultiPoint) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 

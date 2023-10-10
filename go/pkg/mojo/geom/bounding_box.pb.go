@@ -40,7 +40,7 @@ func (x *BoundingBox) Reset() {
 	}
 }
 
-func (x *BoundingBox) ToText() string {
+func (x *BoundingBox) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 

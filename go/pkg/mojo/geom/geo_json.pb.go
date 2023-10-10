@@ -49,7 +49,7 @@ func (x *GeoJson) Reset() {
 	}
 }
 
-func (x *GeoJson) ToText() string {
+func (x *GeoJson) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 

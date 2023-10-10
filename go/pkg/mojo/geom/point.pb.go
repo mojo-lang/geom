@@ -41,7 +41,7 @@ func (x *Point) Reset() {
 	}
 }
 
-func (x *Point) ToText() string {
+func (x *Point) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 

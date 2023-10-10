@@ -46,7 +46,7 @@ func (x *Feature) Reset() {
 	}
 }
 
-func (x *Feature) ToText() string {
+func (x *Feature) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 

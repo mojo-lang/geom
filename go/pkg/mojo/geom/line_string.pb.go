@@ -40,7 +40,7 @@ func (x *LineString) Reset() {
 	}
 }
 
-func (x *LineString) ToText() string {
+func (x *LineString) String() string {
 	return protoimpl.X.MessageStringOf(x)
 }
 
