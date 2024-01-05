@@ -31,7 +31,7 @@ func TestPointAtDistanceAndBearing(t *testing.T) {
 	withinLatBounds := p.Latitude < resultLat+0.001 && p.Latitude > resultLat-0.001
 	withinLngBounds := p.Longitude < resultLng+0.001 && p.Longitude > resultLng-0.001
 	if !(withinLatBounds && withinLngBounds) {
-		t.Error("Unnacceptable result.", fmt.Sprintf("[%f, %f]", p.Latitude, p.Longitude))
+		t.Error("Unacceptable result.", fmt.Sprintf("[%f, %f]", p.Latitude, p.Longitude))
 	}
 }
 
@@ -45,7 +45,7 @@ func TestBearingTo(t *testing.T) {
 
 	withinBearingBounds := bearing < resultBearing+0.001 && bearing > resultBearing-0.001
 	if !withinBearingBounds {
-		t.Error("Unnacceptable result.", fmt.Sprintf("%f", bearing))
+		t.Error("Unacceptable result.", fmt.Sprintf("%f", bearing))
 	}
 }
 
@@ -62,6 +62,6 @@ func TestMidpointTo(t *testing.T) {
 	withinLatBounds := p.Latitude < resultLat+0.001 && p.Latitude > resultLat-0.001
 	withinLngBounds := p.Longitude < resultLng+0.001 && p.Longitude > resultLng-0.001
 	if !(withinLatBounds && withinLngBounds) {
-		t.Error("Unnacceptable result.", fmt.Sprintf("[%f, %f]", p.Latitude, p.Longitude))
+		t.Error("Unacceptable result.", fmt.Sprintf("[%f, %f]", p.Latitude, p.Longitude))
 	}
 }

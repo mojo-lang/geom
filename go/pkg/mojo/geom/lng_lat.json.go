@@ -13,11 +13,11 @@ type LngLatCodec struct {
 }
 
 func (codec *LngLatCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
-	any := iter.ReadAny()
+	a := iter.ReadAny()
 	lngLat := (*LngLat)(ptr)
-	if any.ValueType() == jsoniter.ArrayValue {
+	if a.ValueType() == jsoniter.ArrayValue {
 		var points []float64
-		any.ToVal(&points)
+		a.ToVal(&points)
 		if len(points) < 2 {
 			iter.ReportError("LngLatCodec.Decode", "invalid format of the lngLat, at least two element")
 			return
@@ -27,27 +27,27 @@ func (codec *LngLatCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
 		if len(points) > 2 {
 			lngLat.Altitude = points[2]
 		}
-	} else if any.ValueType() == jsoniter.ObjectValue {
-		lng := any.Get("longitude")
+	} else if a.ValueType() == jsoniter.ObjectValue {
+		lng := a.Get("longitude")
 		if lng.ValueType() == jsoniter.NumberValue {
 			lngLat.Longitude = lng.ToFloat64()
 		} else {
-				lngLat.Longitude = any.Get("lng").ToFloat64()
+			lngLat.Longitude = a.Get("lng").ToFloat64()
 		}
-		lat := any.Get("latitude")
+		lat := a.Get("latitude")
 		if lat.ValueType() == jsoniter.NumberValue {
 			lngLat.Latitude = lat.ToFloat64()
 		} else {
-			lngLat.Latitude = any.Get("lat").ToFloat64()
+			lngLat.Latitude = a.Get("lat").ToFloat64()
 		}
-		alt := any.Get("altitude")
+		alt := a.Get("altitude")
 		if lng.ValueType() == jsoniter.NumberValue {
 			lngLat.Altitude = alt.ToFloat64()
 		} else {
-			lngLat.Altitude = any.Get("alt").ToFloat64()
+			lngLat.Altitude = a.Get("alt").ToFloat64()
 		}
-	} else if any.ValueType() == jsoniter.StringValue {
-		err := lngLat.Parse(any.ToString())
+	} else if a.ValueType() == jsoniter.StringValue {
+		err := lngLat.Parse(a.ToString())
 		if err != nil {
 			iter.ReportError("LngLatCodec.Decode", err.Error())
 		}

@@ -15,37 +15,37 @@ type GeometryCodec struct {
 }
 
 func (codec *GeometryCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
-	any := iter.ReadAny()
-	if any.ValueType() == jsoniter.ObjectValue {
-		t := any.Get("type").ToString()
+	a := iter.ReadAny()
+	if a.ValueType() == jsoniter.ObjectValue {
+		t := a.Get("type").ToString()
 		switch t {
 		case "Point":
 			val := &Point{}
-			any.ToVal(val)
+			a.ToVal(val)
 			((*Geometry)(ptr)).Geometry = &Geometry_Point{Point: val}
 		case "MultiPoint":
 			val := &MultiPoint{}
-			any.ToVal(val)
+			a.ToVal(val)
 			((*Geometry)(ptr)).Geometry = &Geometry_MultiPoint{MultiPoint: val}
 		case "LineString":
 			val := &LineString{}
-			any.ToVal(val)
+			a.ToVal(val)
 			((*Geometry)(ptr)).Geometry = &Geometry_LineString{LineString: val}
 		case "MultiLineString":
 			val := &MultiLineString{}
-			any.ToVal(val)
+			a.ToVal(val)
 			((*Geometry)(ptr)).Geometry = &Geometry_MultiLineString{MultiLineString: val}
 		case "Polygon":
 			val := &Polygon{}
-			any.ToVal(val)
+			a.ToVal(val)
 			((*Geometry)(ptr)).Geometry = &Geometry_Polygon{Polygon: val}
 		case "MultiPolygon":
 			val := &MultiPolygon{}
-			any.ToVal(val)
+			a.ToVal(val)
 			((*Geometry)(ptr)).Geometry = &Geometry_MultiPolygon{val}
 		case "GeometryCollection":
 			val := &GeometryCollection{}
-			any.ToVal(val)
+			a.ToVal(val)
 			((*Geometry)(ptr)).Geometry = &Geometry_GeometryCollection{GeometryCollection: val}
 		}
 	}

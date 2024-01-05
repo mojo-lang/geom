@@ -46,7 +46,7 @@ func (l Length) Value() float64 {
 const km2 = 1000 * 1000
 const cm2 = 100 * 100
 
-// String converts the area to human readable units
+// String converts the area to human-readable units
 func (a Area) String() string {
 	if a > km2 {
 		return fmt.Sprintf("%.3f km^2", a/km2)

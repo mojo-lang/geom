@@ -2,7 +2,10 @@ package geom
 
 import (
 	"github.com/stretchr/testify/assert"
+	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
+	"os"
+	"path/filepath"
 	"testing"
 )
 
@@ -14,7 +17,7 @@ type GeometryTest struct {
 // todo test mysql
 func TestGeometry(t *testing.T) {
 	//testGeometryWithDialector(t, postgres.Open("user=postgres password=postgres dbname=postgres port=15432 host=172.3.0.16 sslmode=disable TimeZone=Asia/Shanghai"))
-	//testGeometryWithDialector(t, sqlite.Open(filepath.Join(os.TempDir(), "gorm.db")))
+	testGeometryWithDialector(t, sqlite.Open(filepath.Join(os.TempDir(), "gorm.db")))
 }
 
 func testGeometryWithDialector(t *testing.T, dialector gorm.Dialector) {
@@ -23,7 +26,7 @@ func testGeometryWithDialector(t *testing.T, dialector gorm.Dialector) {
 		return
 	}
 
-	db.Migrator().DropTable(&GeometryTest{})
+	_ = db.Migrator().DropTable(&GeometryTest{})
 	err = db.AutoMigrate(&GeometryTest{})
 	if err != nil {
 		return
@@ -37,7 +40,7 @@ func testGeometryWithDialector(t *testing.T, dialector gorm.Dialector) {
 
 	var count int64
 	g1 := &GeometryTest{}
-	assert.NoError(t, db.Select("id", "st_astext(geometry) as geometry").First(g1).Count(&count).Error)
+	assert.NoError(t, db.Select("id", "geometry").First(g1).Count(&count).Error)
 	assert.Equal(t, "1", g1.Id)
 	assert.Equal(t, 121.1, g1.Geometry.GetPoint().GetLongitude())
 	assert.Equal(t, 34.2, g1.Geometry.GetPoint().GetLatitude())

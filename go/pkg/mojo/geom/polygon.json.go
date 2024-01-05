@@ -14,9 +14,9 @@ type PolygonCodec struct {
 }
 
 func (codec *PolygonCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
-	any := iter.ReadAny()
-	if any.ValueType() == jsoniter.ObjectValue {
-		c := any.Get("coordinates")
+	a := iter.ReadAny()
+	if a.ValueType() == jsoniter.ObjectValue {
+		c := a.Get("coordinates")
 		if c.ValueType() == jsoniter.ArrayValue {
 			var coordinates [][][]float64
 			c.ToVal(&coordinates)
@@ -87,4 +87,3 @@ func (codec *PolygonCodec) Encode(ptr unsafe.Pointer, stream *jsoniter.Stream) {
 	stream.WriteArrayEnd()
 	stream.WriteObjectEnd()
 }
-
