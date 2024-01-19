@@ -19,7 +19,7 @@ type LngLat {
     longitude: Double @1 @required //< 经度
     
     /// the latitude of the `LngLat`
-    latitude: Double @2 @required //< 维度
+    latitude: Double @2 @required //< 纬度
     
     /// the altitude of the `LngLat` in meters.
     altitude: Double @3 //< 高度

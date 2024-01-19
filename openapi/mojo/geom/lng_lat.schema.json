@@ -11,7 +11,7 @@
         },
         "latitude": {
             "title": "mojo.core.Float64",
-            "description": "the latitude of the `LngLat`\n维度",
+            "description": "the latitude of the `LngLat`\n纬度",
             "type": "number",
             "format": "Float64"
         },
