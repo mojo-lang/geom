@@ -62,3 +62,16 @@ func (x *Geometry) Value() (driver.Value, error) {
 func (x *Geometry) GormDataType() string {
 	return "geometry"
 }
+
+// GormDBDataType gorm db data type
+// func (x *Geometry) GormDBDataType(db *gorm.DB, field *schema.Field) string {
+//	 switch db.Dialector.Name() {
+//	 case "sqlite":
+//		return "Point"
+//	 case "mysql":
+//		return "Point"
+//	 case "postgres":
+//		return "Point"
+//	 }
+//	 return ""
+// }
