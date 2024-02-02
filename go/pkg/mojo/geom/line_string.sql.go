@@ -4,6 +4,8 @@ import (
 	"bytes"
 	"database/sql/driver"
 	"fmt"
+	"gorm.io/gorm"
+	"gorm.io/gorm/schema"
 	"reflect"
 	"strconv"
 	"strings"
@@ -70,7 +72,7 @@ func (x *LineString) Scan(value interface{}) error {
 		}
 		return err
 	case string:
-		points, err := parsePolygon(bs)
+		points, err := parseLineString(bs)
 		if err == nil {
 			x.Coordinates = append(x.Coordinates, points...)
 		}
@@ -102,4 +104,19 @@ func (x *LineString) Value() (driver.Value, error) {
 // GormDataType gorm common data type
 func (x *LineString) GormDataType() string {
 	return "lseg"
+}
+
+// GormDBDataType gorm db data type
+func (x *LineString) GormDBDataType(db *gorm.DB, field *schema.Field) string {
+	switch db.Dialector.Name() {
+	case "sqlite":
+		return "LineString"
+	case "mysql":
+		return "LineString"
+	case "postgres":
+		return "lseg"
+	case "clickhouse":
+		return "Ring"
+	}
+	return ""
 }
