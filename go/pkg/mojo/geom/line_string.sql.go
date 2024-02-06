@@ -103,7 +103,7 @@ func (x *LineString) Value() (driver.Value, error) {
 
 // GormDataType gorm common data type
 func (x *LineString) GormDataType() string {
-	return "lseg"
+	return "path"
 }
 
 // GormDBDataType gorm db data type
@@ -114,7 +114,7 @@ func (x *LineString) GormDBDataType(db *gorm.DB, field *schema.Field) string {
 	case "mysql":
 		return "LineString"
 	case "postgres":
-		return "lseg"
+		return "path"
 	case "clickhouse":
 		return "Ring"
 	}
