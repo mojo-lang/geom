@@ -13,31 +13,61 @@ func init() {
 type PolygonCodec struct {
 }
 
+func arrayDim(dim int, a jsoniter.Any) int {
+	if a.ValueType() == jsoniter.ArrayValue {
+		if a.Size() > 0 {
+			return arrayDim(dim+1, a.Get(0))
+		} else {
+			return dim + 1
+		}
+	}
+	return dim
+}
+
+func parseLine(line [][]float64) *LineString {
+	lineString := &LineString{}
+	for _, point := range line {
+		if len(point) > 1 {
+			lngLat := &LngLat{}
+			lngLat.Longitude = point[0]
+			lngLat.Latitude = point[1]
+
+			if len(point) > 2 {
+				lngLat.Altitude = point[2]
+			}
+			lineString.Add(lngLat)
+		}
+	}
+	return lineString
+}
+
+func convertPolygon(array jsoniter.Any, polygon *Polygon) {
+	var coordinates [][][]float64
+	array.ToVal(&coordinates)
+
+	for _, line := range coordinates {
+		lineString := parseLine(line)
+		polygon.LineStrings = append(polygon.LineStrings, lineString)
+	}
+}
+
 func (codec *PolygonCodec) Decode(ptr unsafe.Pointer, iter *jsoniter.Iterator) {
 	a := iter.ReadAny()
 	if a.ValueType() == jsoniter.ObjectValue {
 		c := a.Get("coordinates")
 		if c.ValueType() == jsoniter.ArrayValue {
-			var coordinates [][][]float64
-			c.ToVal(&coordinates)
-
+			convertPolygon(c, (*Polygon)(ptr))
+		}
+	} else if a.ValueType() == jsoniter.ArrayValue {
+		dim := arrayDim(0, a)
+		if dim == 2 {
+			var coordinates [][]float64
+			a.ToVal(&coordinates)
+			lineString := parseLine(coordinates)
 			polygon := (*Polygon)(ptr)
-			for _, line := range coordinates {
-				lineString := &LineString{}
-				for _, point := range line {
-					if len(point) > 1 {
-						lngLat := &LngLat{}
-						lngLat.Longitude = point[0]
-						lngLat.Latitude = point[1]
-
-						if len(point) > 2 {
-							lngLat.Altitude = point[2]
-						}
-						lineString.Add(lngLat)
-					}
-				}
-				polygon.LineStrings = append(polygon.LineStrings, lineString)
-			}
+			polygon.LineStrings = append(polygon.LineStrings, lineString)
+		} else if dim == 3 {
+			convertPolygon(a, (*Polygon)(ptr))
 		}
 	}
 }

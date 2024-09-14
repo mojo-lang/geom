@@ -1,8 +1,16 @@
 package geom
 
 import (
+	"fmt"
 	"math"
 )
+
+func (x *Circle) ToString() string {
+	if x != nil && x.Center != nil {
+		return fmt.Sprintf("%f,%f,%f", x.Center.Longitude, x.Center.Latitude, x.Radius)
+	}
+	return ""
+}
 
 func (x *Circle) ToPolygon(numberOfSegments int) *Polygon {
 	if numberOfSegments == 0 {
