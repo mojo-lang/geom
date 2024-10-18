@@ -130,3 +130,40 @@ func (x *Geometry) SetValue(val interface{}) error {
 	}
 	return nil
 }
+
+// Area
+// Calculate the geometry area if the geometry is polygon or polygon-convertable.
+func (x *Geometry) Area() float64 {
+	if x == nil {
+		return 0
+	}
+
+	switch g := x.Geometry.(type) {
+	case *Geometry_Point, *Geometry_MultiPoint:
+		return 0
+	case *Geometry_LineString:
+		if g.LineString.IsClosed() {
+			return NewPolygon(g.LineString).Area()
+		}
+	case *Geometry_MultiLineString:
+		area := 0.0
+		for _, l := range g.MultiLineString.LineStrings {
+			if l.IsClosed() {
+				area += NewPolygon(l).Area()
+			}
+		}
+		return area
+	case *Geometry_Polygon:
+		return g.Polygon.Area()
+	case *Geometry_MultiPolygon:
+		return g.MultiPolygon.Area()
+	case *Geometry_GeometryCollection:
+		area := 0.0
+		for _, geo := range g.GeometryCollection.Geometries {
+			area += geo.Area()
+		}
+		return area
+	}
+
+	return 0
+}

@@ -96,6 +96,10 @@ func (x *Polygon) Contains(point *LngLat) bool {
 // Area Assumption: The holes are not intersected with each other.
 func (x *Polygon) Area() float64 {
 	var area float64
+	if len(x.LineStrings) == 1 && x.LineStrings[0].Clockwise() == 1 {
+		x.Invert()
+	}
+
 	for idx, line := range x.LineStrings {
 		var pts []s2.Point
 		for _, pt := range line.Coordinates {
