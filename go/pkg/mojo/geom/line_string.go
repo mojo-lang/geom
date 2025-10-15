@@ -65,3 +65,34 @@ func (x *LineString) Clockwise() int {
 	}
 	return 0
 }
+
+func (x *LineString) ToGeometry() *Geometry {
+	if x != nil {
+		return &Geometry{
+			Geometry: &Geometry_LineString{LineString: x},
+		}
+	}
+	return nil
+}
+
+func (x *LineString) BoundingBox() *BoundingBox {
+	if x != nil && len(x.Coordinates) > 0 {
+		box := &BoundingBox{}
+		for _, ll := range x.Coordinates {
+			box = box.ExtendToPoint(ll)
+		}
+		return box
+	}
+	return nil
+}
+
+func (x *LineString) CoordTransform(from, to SpatialReference) *LineString {
+	if x != nil && len(x.Coordinates) > 0 {
+		ls := &LineString{}
+		for _, c := range x.Coordinates {
+			ls.Coordinates = append(ls.Coordinates, c.CoordTransform(from, to))
+		}
+		return ls
+	}
+	return x
+}

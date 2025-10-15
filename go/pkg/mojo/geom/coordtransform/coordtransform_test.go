@@ -1,4 +1,4 @@
-package geom
+package coordtransform
 
 import (
 	"testing"
@@ -39,3 +39,12 @@ func BenchmarkWGS84toGCJ02(b *testing.B) {
 		WGS84toGCJ02(116.404, 39.915)
 	}
 }
+
+//func TestTransform(t *testing.T) {
+//	lat1, lng1 := transform(116.404, 39.915)
+//	lng2 := transformLng(116.404, 39.915)
+//	lat2 := transformLat(116.404, 39.915)
+//
+//	assert.Equal(t, lng1, lng2)
+//	assert.Equal(t, lat1, lat2)
+//}

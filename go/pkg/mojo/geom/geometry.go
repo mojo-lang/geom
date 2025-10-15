@@ -2,6 +2,8 @@ package geom
 
 import (
 	"fmt"
+	jsoniter "github.com/json-iterator/go"
+	"github.com/mojo-lang/core/go/pkg/mojo/core"
 )
 
 type GeometryType int
@@ -125,10 +127,57 @@ func (x *Geometry) SetValue(val interface{}) error {
 		x.Geometry = &Geometry_MultiPolygon{m}
 	case *GeometryCollection:
 		x.Geometry = &Geometry_GeometryCollection{GeometryCollection: m}
+	case *core.Object:
+		if bytes, err := jsoniter.Marshal(m); err != nil {
+			return err
+		} else {
+			geometry := &Geometry{}
+			if err = jsoniter.Unmarshal(bytes, geometry); err != nil {
+				return err
+			}
+			x.Geometry = geometry.Geometry
+		}
+	case *core.Value:
+		if obj := m.GetObject(); obj != nil {
+			return x.SetValue(obj)
+		} else {
+			return fmt.Errorf("Place.Value has unexpected core.Value type %s", m.GetKind().String())
+		}
 	default:
 		return fmt.Errorf("Place.Value has unexpected type %T", m)
 	}
 	return nil
+}
+
+func (x *Geometry) ToObject() *core.Object {
+	if x != nil {
+		if bytes, err := jsoniter.Marshal(x); err != nil {
+			return nil
+		} else {
+			obj := &core.Object{}
+			if err = jsoniter.Unmarshal(bytes, obj); err != nil {
+				return nil
+			}
+			return obj
+		}
+	}
+	return nil
+}
+
+func NewGeometryFrom(obj *core.Object) (*Geometry, error) {
+	if obj == nil {
+		return nil, nil
+	}
+
+	if bytes, err := jsoniter.Marshal(obj); err != nil {
+		return nil, err
+	} else {
+		g := &Geometry{}
+		if err = jsoniter.Unmarshal(bytes, g); err != nil {
+			return nil, err
+		}
+		return g, nil
+	}
 }
 
 // Area
@@ -166,4 +215,72 @@ func (x *Geometry) Area() float64 {
 	}
 
 	return 0
+}
+
+func (x *Geometry) BoundingBox() *BoundingBox {
+	if x == nil {
+		return nil
+	}
+
+	switch g := x.Geometry.(type) {
+	case *Geometry_Point:
+		return g.Point.BoundingBox()
+	case *Geometry_MultiPoint:
+		return g.MultiPoint.BoundingBox()
+	case *Geometry_LineString:
+		return g.LineString.BoundingBox()
+	case *Geometry_MultiLineString:
+		return g.MultiLineString.BoundingBox()
+	case *Geometry_Polygon:
+		return g.Polygon.BoundingBox()
+	case *Geometry_MultiPolygon:
+		return g.MultiPolygon.BoundingBox()
+	case *Geometry_GeometryCollection:
+		return g.GeometryCollection.BoundingBox()
+	}
+	return nil
+}
+
+func (x *Geometry) Contains(point *LngLat) bool {
+	if x == nil {
+		return false
+	}
+
+	switch g := x.Geometry.(type) {
+	case *Geometry_Polygon:
+		return g.Polygon.Contains(point)
+	case *Geometry_MultiPolygon:
+		return g.MultiPolygon.Contains(point)
+	case *Geometry_GeometryCollection:
+		for _, geo := range g.GeometryCollection.Geometries {
+			if geo.Contains(point) {
+				return true
+			}
+		}
+	}
+	return false
+}
+
+func (x *Geometry) CoordTransform(from, to SpatialReference) *Geometry {
+	if x == nil {
+		return x
+	}
+
+	switch g := x.Geometry.(type) {
+	case *Geometry_Point:
+		return &Geometry{Geometry: &Geometry_Point{Point: g.Point.CoordTransform(from, to)}}
+	case *Geometry_MultiPoint:
+		return &Geometry{Geometry: &Geometry_MultiPoint{MultiPoint: g.MultiPoint.CoordTransform(from, to)}}
+	case *Geometry_LineString:
+		return &Geometry{Geometry: &Geometry_LineString{LineString: g.LineString.CoordTransform(from, to)}}
+	case *Geometry_MultiLineString:
+		return &Geometry{Geometry: &Geometry_MultiLineString{MultiLineString: g.MultiLineString.CoordTransform(from, to)}}
+	case *Geometry_Polygon:
+		return &Geometry{Geometry: &Geometry_Polygon{Polygon: g.Polygon.CoordTransform(from, to)}}
+	case *Geometry_MultiPolygon:
+		return &Geometry{Geometry: &Geometry_MultiPolygon{MultiPolygon: g.MultiPolygon.CoordTransform(from, to)}}
+	case *Geometry_GeometryCollection:
+		return &Geometry{Geometry: &Geometry_GeometryCollection{GeometryCollection: g.GeometryCollection.CoordTransform(from, to)}}
+	}
+	return x
 }

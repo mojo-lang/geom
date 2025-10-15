@@ -3,6 +3,7 @@ package geom
 import (
 	"github.com/golang/geo/s2"
 	"github.com/mmcloughlin/geohash"
+	"github.com/mojo-lang/geom/go/pkg/mojo/geom/coordtransform"
 	"math"
 )
 
@@ -158,6 +159,45 @@ func (x *LngLat) CrossProduct(before *LngLat, after *LngLat) float64 {
 		return (x.Longitude-before.Longitude)*(after.Latitude-x.Latitude) - (x.Latitude-before.Latitude)*(after.Longitude-x.Longitude)
 	}
 	return 0
+}
+
+func (x *LngLat) CoordTransform(from, to SpatialReference) *LngLat {
+	if x != nil {
+		d := &LngLat{
+			Longitude: x.Longitude,
+			Latitude:  x.Latitude,
+		}
+		switch from {
+		case SpatialReference_SPATIAL_REFERENCE_WGS84:
+			switch to {
+			case SpatialReference_SPATIAL_REFERENCE_GCJ02:
+				d.Longitude, d.Latitude = coordtransform.WGS84toGCJ02(x.Longitude, x.Latitude)
+				return d
+			case SpatialReference_SPATIAL_REFERENCE_BD09:
+				d.Longitude, d.Latitude = coordtransform.WGS84toBD09(x.Longitude, x.Latitude)
+				return d
+			}
+		case SpatialReference_SPATIAL_REFERENCE_GCJ02:
+			switch to {
+			case SpatialReference_SPATIAL_REFERENCE_WGS84:
+				d.Longitude, d.Latitude = coordtransform.GCJ02toWGS84(x.Longitude, x.Latitude)
+				return d
+			case SpatialReference_SPATIAL_REFERENCE_BD09:
+				d.Longitude, d.Latitude = coordtransform.GCJ02toBD09(x.Longitude, x.Latitude)
+				return d
+			}
+		case SpatialReference_SPATIAL_REFERENCE_BD09:
+			switch to {
+			case SpatialReference_SPATIAL_REFERENCE_WGS84:
+				d.Longitude, d.Latitude = coordtransform.BD09toWGS84(x.Longitude, x.Latitude)
+				return d
+			case SpatialReference_SPATIAL_REFERENCE_GCJ02:
+				d.Longitude, d.Latitude = coordtransform.BD09toGCJ02(x.Longitude, x.Latitude)
+				return d
+			}
+		}
+	}
+	return x
 }
 
 func DistanceBetween(pt1 *LngLat, pt2 *LngLat) float64 {

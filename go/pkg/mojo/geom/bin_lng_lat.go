@@ -2,6 +2,7 @@ package geom
 
 const (
 	E7 = 10000000.0
+	E5 = 100000.0
 	E2 = 100.0
 )
 
@@ -26,7 +27,17 @@ func (x *BinLngLat) Encode(lnglat *LngLat) *BinLngLat {
 }
 
 func (x *BinLngLat) Decode() *LngLat {
-	return &LngLat{Longitude: float64(x.Longitude) / E7, Latitude: float64(x.Latitude) / E7, Altitude: float64(x.Altitude) / E2}
+	if x != nil {
+		return &LngLat{Longitude: float64(x.Longitude) / E7, Latitude: float64(x.Latitude) / E7, Altitude: float64(x.Altitude) / E2}
+	}
+	return nil
+}
+
+func (x *BinLngLat) CoordTransform(from, to SpatialReference) *BinLngLat {
+	if x != nil {
+		return NewBinLngLatWith(x.Decode().CoordTransform(from, to))
+	}
+	return nil
 }
 
 func DecodeBinLngLat(coordinates ...int32) *LngLat {

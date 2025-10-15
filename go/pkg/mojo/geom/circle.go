@@ -39,6 +39,17 @@ func (x *Circle) destination(bearing float64) *LngLat {
 	return &LngLat{Longitude: toDegrees(lng), Latitude: toDegrees(lat)}
 }
 
+func (x *Circle) CoordTransform(from, to SpatialReference) *Circle {
+	if x != nil {
+		return &Circle{
+			Type:   x.Type,
+			Center: x.Center.CoordTransform(from, to),
+			Radius: x.Radius,
+		}
+	}
+	return x
+}
+
 func toRadians(angleInDegrees float64) float64 {
 	return angleInDegrees * math.Pi / 180
 }

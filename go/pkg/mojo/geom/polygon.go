@@ -178,3 +178,30 @@ func (x *Polygon) intersectsWithRaycast(point *LngLat, start *LngLat, end *LngLa
 //	}
 //	return nil
 //}
+
+func (x *Polygon) ToGeometry() *Geometry {
+	if x != nil {
+		return &Geometry{
+			Geometry: &Geometry_Polygon{Polygon: x},
+		}
+	}
+	return nil
+}
+
+func (x *Polygon) BoundingBox() *BoundingBox {
+	if x != nil && len(x.LineStrings) > 0 {
+		return x.LineStrings[0].BoundingBox()
+	}
+	return nil
+}
+
+func (x *Polygon) CoordTransform(from, to SpatialReference) *Polygon {
+	if x != nil && len(x.LineStrings) > 0 {
+		p := &Polygon{}
+		for _, l := range x.LineStrings {
+			p.LineStrings = append(p.LineStrings, l.CoordTransform(from, to))
+		}
+		return p
+	}
+	return x
+}

@@ -31,3 +31,40 @@ func (x *MultiPolygon) Area() float64 {
 	}
 	return 0
 }
+
+func (x *MultiPolygon) ToGeometry() *Geometry {
+	if x != nil {
+		return &Geometry{
+			Geometry: &Geometry_MultiPolygon{MultiPolygon: x},
+		}
+	}
+	return nil
+}
+
+func (x *MultiPolygon) BoundingBox() *BoundingBox {
+	if x != nil && len(x.Polygons) > 0 {
+		var box *BoundingBox
+		for _, pg := range x.Polygons {
+			if bb := pg.BoundingBox(); bb != nil {
+				if box == nil {
+					box = bb
+				} else {
+					box = box.Extend(bb)
+				}
+			}
+		}
+		return box
+	}
+	return nil
+}
+
+func (x *MultiPolygon) CoordTransform(from, to SpatialReference) *MultiPolygon {
+	if x != nil && len(x.Polygons) > 0 {
+		mp := &MultiPolygon{}
+		for _, p := range x.Polygons {
+			mp.Polygons = append(mp.Polygons, p.CoordTransform(from, to))
+		}
+		return mp
+	}
+	return x
+}

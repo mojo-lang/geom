@@ -5,6 +5,7 @@ import (
 	"github.com/golang/geo/s1"
 )
 
+// EarthRadiusMeters The sphere's radius is equal to the WGS 1984 semimajor axis, 6378137.0 meters.
 const EarthRadiusMeters = 1000 * 6371
 
 // Length denotes a length on Earth
